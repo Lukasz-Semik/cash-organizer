@@ -5,3 +5,4 @@ public/assets/bundle.js.map
 public/assets/main.css
 public/assets/main.css.map
 .DS_Store
+.env.development

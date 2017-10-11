@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { firebaseApp } from '../firebase';
 
 class LoginPage extends Component{
   constructor(props){
@@ -14,6 +15,11 @@ class LoginPage extends Component{
   }
   handleSubmit(event){
     event.preventDefault();
+    const history = this.props.history;
+    const { email, password } = this.state;
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    .then(()=>{history.push('/app')})
+    .catch(error=>console.log(error));
   }
   onChangeEmail(event){
     const email = event.target.value;
@@ -24,14 +30,13 @@ class LoginPage extends Component{
     this.setState(()=>({ password }));
   }
   render(){
-    console.log('Login state',this.state);
     return(
       <div>
         <h1>LoginPage</h1>
         <form onSubmit={this.handleSubmit}>
           <input type="text" name="email" placeholder="email" onChange={this.onChangeEmail} value={this.state.email}/>
           <input type="password" name="password" placeholder="password" onChange={this.onChangePass} value={this.state.password}/>
-          <button>Submit</button>
+          <button>Log In</button>
         </form>
       </div>
     );
