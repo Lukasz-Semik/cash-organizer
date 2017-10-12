@@ -17,11 +17,11 @@ class App extends Component{
   }
   componentDidMount(){
     if(!this.state.user){
-      this.props.history.push('/');
+      this.props.history.push('/login');
     }
   }
   render(){
-    this.state.user && console.log(this.state.user.email);
+    this.state.user && console.log(this.state.user);
     return(
       <div>
         <h1>Hello from App</h1>
