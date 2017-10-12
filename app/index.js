@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { firebaseApp } from './firebase';
+import { Provider } from 'react-redux';
+import storeConfig from './src/storeConfig';
 
 import 'normalize.css/normalize.css';
 import './styles/main.scss';
@@ -15,7 +17,16 @@ firebaseApp.auth().onAuthStateChanged(user => {
   }
 })
 
+const store = storeConfig();
+
+store.subscribe(()=>{
+  const state = store.getState();
+  console.log(state);
+})
+
 ReactDOM.render(
-  <Routing />
+  <Provider store={store}>
+    <Routing />
+  </Provider>
   , document.getElementById('root')
 );

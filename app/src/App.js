@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
+import { connect } from 'react-redux';
+import { startTakeDbData } from './actions/dataActions';
+
 
 class App extends Component{
   constructor(props){
@@ -16,19 +19,35 @@ class App extends Component{
     .catch(error=>console.log(error));
   }
   componentDidMount(){
+    const { user } = this.state;
     if(!this.state.user){
       this.props.history.push('/login');
+    }else{
+      this.props.startTakeDbData();
     }
   }
   render(){
-    this.state.user && console.log(this.state.user);
+    console.log(this.props);
     return(
       <div>
-        <h1>Hello from App</h1>
+        <h1>Hello {this.props.user.username} from App</h1>
         <button onClick={()=>{this.logOut()}}>LogOut</button>
       </div>
     );
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    startTakeDbData: () => dispatch(startTakeDbData())
+  }
+}
+
+const mapStateToProps = (state) => {
+  const user = state.usersData;
+  return{
+    user
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
