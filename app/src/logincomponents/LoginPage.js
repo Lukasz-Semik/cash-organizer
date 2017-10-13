@@ -1,36 +1,25 @@
 import React, { Component } from 'react';
-import { firebaseApp, database } from '../firebase';
+import { firebaseApp } from '../../firebase';
 
-class SignUpPage extends Component{
+class LoginPage extends Component{
   constructor(props){
     super(props);
 
     this.state={
       email: '',
-      password: '',
-      username: ''
+      password: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
     this.onChangePass = this.onChangePass.bind(this);
-    this.onChangeUsername = this.onChangeUsername.bind(this);
   }
   handleSubmit(event){
     event.preventDefault();
-    const { email, password, username } = this.state;
     const history = this.props.history;
-    firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-    .then(()=>{
-      const userId = firebaseApp.auth().currentUser.uid;
-      database.ref(`user/${userId}`).set({
-        email,
-        username
-      })
-      history.push('/app')
-    })
-    .catch(error=>{
-      console.log(error);
-    })
+    const { email, password } = this.state;
+    firebaseApp.auth().signInWithEmailAndPassword(email, password)
+    .then(()=>{history.push('/app')})
+    .catch(error=>console.log(error));
   }
   onChangeEmail(event){
     const email = event.target.value;
@@ -40,23 +29,18 @@ class SignUpPage extends Component{
     const password = event.target.value;
     this.setState(()=>({ password }));
   }
-  onChangeUsername(event){
-    const username = event.target.value;
-    this.setState(()=>({username}))
-  }
   render(){
     return(
       <div>
-        <h1>SignUpPage</h1>
+        <h1>LoginPage</h1>
         <form onSubmit={this.handleSubmit}>
-          <input type="text" name="username" placeholder="username" onChange={this.onChangeUsername} value={this.state.username}/>
           <input type="text" name="email" placeholder="email" onChange={this.onChangeEmail} value={this.state.email}/>
           <input type="password" name="password" placeholder="password" onChange={this.onChangePass} value={this.state.password}/>
-          <button>Submit</button>
+          <button>Log In</button>
         </form>
       </div>
     );
   }
 }
 
-export default SignUpPage;
+export default LoginPage;

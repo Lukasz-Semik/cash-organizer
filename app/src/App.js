@@ -12,12 +12,6 @@ class App extends Component{
       user: firebaseApp.auth().currentUser
     }
   }
-  logOut(){
-    const history = this.props.history;
-    firebaseApp.auth().signOut()
-    .then(()=>{history.push('/')})
-    .catch(error=>console.log(error));
-  }
   componentDidMount(){
     const { user } = this.state;
     if(!this.state.user){
@@ -27,11 +21,11 @@ class App extends Component{
     }
   }
   render(){
-    console.log(this.props);
+    console.log('props from App', this.props);
     return(
       <div>
         <h1>Hello {this.props.user.username} from App</h1>
-        <button onClick={()=>{this.logOut()}}>LogOut</button>
+
       </div>
     );
   }

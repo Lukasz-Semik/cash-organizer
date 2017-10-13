@@ -5,8 +5,8 @@ import history from './history';
 import LandingPage from '../src/LandingPage';
 import App from '../src/App';
 import Navigation from '../src/Navigation';
-import SignUpPage from '../src/SignUpPage';
-import LoginPage from '../src/LoginPage';
+import SignUpPage from '../src/logincomponents/SignUpPage';
+import LoginPage from '../src/logincomponents/LoginPage';
 
 const Routing = () => (
   <Router history={history}>
