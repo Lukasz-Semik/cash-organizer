@@ -1,4 +1,4 @@
-import { TAKE_DB_DATA, LOG_OUT } from './action_names';
+import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT } from './action_names';
 import { database, firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
@@ -24,6 +24,27 @@ export const startTakeDbData = () => {
     })
   }
 }
+
+export const addOneShot = (oneShot) => ({
+  type: ADD_ONE_SHOT,
+  oneShot
+});
+
+export const startAddOneShot = (oneShot) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/oneShots`)
+    .push(oneShot)
+    .then((ref)=>{
+      dispatch(addOneShot({
+        id: ref,
+        ...oneShot
+      }))
+    });
+  }
+}
+
+
+
 
 export const logOut = () => ({type: LOG_OUT});
 

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { startTakeDbData } from './actions/dataActions';
+
+import OneShotsList from './components/OneShotsList';
 
 
 class App extends Component{
@@ -24,7 +28,8 @@ class App extends Component{
     console.log('props from App', this.props);
     return(
       <div>
-        <h1>Hello {this.props.user.username} from App</h1>
+        <OneShotsList />
+        <Link to="/oneshotcreator">Create One Shot</Link>
 
       </div>
     );
@@ -37,11 +42,5 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-const mapStateToProps = (state) => {
-  const user = state.usersData;
-  return{
-    user
-  }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(null, mapDispatchToProps)(App);
