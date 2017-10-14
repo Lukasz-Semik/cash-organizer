@@ -7,7 +7,8 @@ import { startLogOut } from './actions/dataActions';
 
 class Navigation extends Component{
   render(){
-    console.log('props from navigation: ', this.props)
+    //console.log('props from navigation: ', this.props)
+    //nav for logged in user.
     if(this.props.username !== 'not logged in'){
       return(
         <div>
@@ -16,7 +17,7 @@ class Navigation extends Component{
           <button onClick={()=>this.props.startLogOut()}>LogOut</button>
         </div>
       );
-    }else{
+    }else{ //nav for not logged in user
       return(
         <div>
           <h1>Let's organize!</h1>

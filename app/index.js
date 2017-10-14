@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import storeConfig from './src/storeConfig';
 
 import 'normalize.css/normalize.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import './styles/main.scss';
 
 import Routing from './routing/Routing';

@@ -19,6 +19,7 @@ export const startTakeDbData = () => {
           userId: childSnapshot.key,
           ...childSnapshot.val()
         }
+        console.log(tempUser);
       })
       if(tempUser.oneShots === 'empty'){
         dispatch(takeDbData(tempUser))
@@ -26,7 +27,11 @@ export const startTakeDbData = () => {
         const tempOneShots = tempUser.oneShots;
         let tempOneShotsArr = [];
         for(let props in tempOneShots){
-          tempOneShotsArr.push(tempOneShots[props])
+
+          tempOneShotsArr.push({
+            ...tempOneShots[props],
+            oneShotId: props
+          })
         }
         const user = {
           ...tempUser,

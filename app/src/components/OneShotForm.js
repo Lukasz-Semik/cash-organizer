@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import DatePicker from 'react-datepicker';
+import moment from 'moment';
 
 class OneShotForm extends Component{
   constructor(props){
     super(props);
-
     this.state={
       oneShotTitle: '',
-      oneShotMoney: ''
+      oneShotMoney: '',
+      deadline: ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
     this.onChangeMoney = this.onChangeMoney.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
   }
   onChangeTitle(event){
     const oneShotTitle = event.target.value.trim();
@@ -22,9 +25,12 @@ class OneShotForm extends Component{
       this.setState(()=>({oneShotMoney}))
     }
   }
+  handleDateChange(date){
+    this.setState(()=>({deadline: date.format('LL')}))
+  }
   handleOnSubmit(event){
     event.preventDefault();
-    this.props.addOneShot({...this.state});
+    this.props.addOneShot({...this.state, done: false});
   }
   render(){
     return(
@@ -35,6 +41,7 @@ class OneShotForm extends Component{
             onChange={this.onChangeTitle} placeholder="One Shot"/>
           <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
             onChange={this.onChangeMoney} placeholder="Cash"/>
+          <DatePicker selected={moment()} onChange={this.handleDateChange}/>
           <button>Add</button>
         </form>
       </div>
