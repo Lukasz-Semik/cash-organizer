@@ -19,7 +19,7 @@ class SignUpPage extends Component{
     event.preventDefault();
     const { email, password, username } = this.state;
     const history = this.props.history;
-    const oneShots = '';
+    const oneShots = 'empty';
     firebaseApp.auth().createUserWithEmailAndPassword(email, password)
     .then(()=>{
       const userId = firebaseApp.auth().currentUser.uid;

@@ -12,15 +12,28 @@ export const startTakeDbData = () => {
     return database.ref('user')
     .once('value')
     .then(snapshot=>{
-      let user = {};
+      let tempUser = {};
       snapshot.forEach(childSnapshot=>{
         if(childSnapshot.key === firebaseApp.auth().currentUser.uid)
-        user = {
+        tempUser = {
           userId: childSnapshot.key,
           ...childSnapshot.val()
         }
       })
-      dispatch(takeDbData(user))
+      if(tempUser.oneShots === 'empty'){
+        dispatch(takeDbData(tempUser))
+      }else{
+        const tempOneShots = tempUser.oneShots;
+        let tempOneShotsArr = [];
+        for(let props in tempOneShots){
+          tempOneShotsArr.push(tempOneShots[props])
+        }
+        const user = {
+          ...tempUser,
+          oneShots: tempOneShotsArr
+        }
+        dispatch(takeDbData(user));
+      }
     })
   }
 }
