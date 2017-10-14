@@ -1,4 +1,4 @@
-import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT } from '../actions/action_names';
+import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT } from '../actions/action_names';
 
 const userDataDefault = {};
 
@@ -10,6 +10,16 @@ const dataReducer = (state=userDataDefault, action) => {
       return state;
     case LOG_OUT:
       return {};
+    case REMOVE_ONE_SHOT:
+      //const oneShots = state.usersData.oneShots.filter(oneShot=>oneShot !== action.oneShotId)
+      console.log('userDataReducer', state.oneShots);
+      const oneShots = !!state.oneShots ?
+                        (state.oneShots.filter(oneShot=>oneShot !== action.oneShotId)) :
+                        []
+      return {
+        ...state,
+        oneShots
+      }
     default:
       return state;
   }

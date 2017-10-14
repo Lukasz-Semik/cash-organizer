@@ -8,6 +8,7 @@ import { startTakeDbData } from './actions/dataActions';
 import OneShotsList from './components/OneShotsList';
 
 
+
 class App extends Component{
   constructor(props){
     super(props);

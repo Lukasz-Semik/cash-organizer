@@ -1,4 +1,4 @@
-import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT } from './action_names';
+import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT } from './action_names';
 import { database, firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
@@ -21,7 +21,7 @@ export const startTakeDbData = () => {
         }
         console.log(tempUser);
       })
-      if(tempUser.oneShots === 'empty'){
+      if(tempUser.oneShots === 'empty' || !tempUser.oneShots){
         dispatch(takeDbData(tempUser))
       }else{
         const tempOneShots = tempUser.oneShots;
@@ -61,6 +61,18 @@ export const startAddOneShot = (oneShot) => {
   }
 }
 
+export const removeOneShot = (oneShotId) => ({
+  type: REMOVE_ONE_SHOT,
+  oneShotId
+});
+
+export const startRemoveOneShot = (oneShotId) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/oneShots/${oneShotId}`)
+    .remove()
+    .then(()=>dispatch(removeOneShot(oneShotId)))
+  }
+}
 
 
 
