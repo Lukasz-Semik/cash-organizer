@@ -6,9 +6,9 @@ class OneShotForm extends Component{
   constructor(props){
     super(props);
     this.state={
-      oneShotTitle: '',
-      oneShotMoney: '',
-      deadline: ''
+      oneShotTitle: this.props.oneShot ? this.props.oneShot.oneShotTitle : '',
+      oneShotMoney: this.props.oneShot ? this.props.oneShot.oneShotMoney : '',
+      deadline: this.props.oneShot ? this.props.oneShot.deadline : ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -30,9 +30,18 @@ class OneShotForm extends Component{
   }
   handleOnSubmit(event){
     event.preventDefault();
-    this.props.addOneShot({...this.state, done: false});
+    if(this.state.deadline !== ''){
+      this.props.addOneShot({...this.state, done: false});
+    }else{
+        this.props.addOneShot({
+          ...this.state,
+          done: false,
+          deadline: moment().format('LL')
+        })
+    }
   }
   render(){
+    console.log('one shot form state', this.state);
     return(
       <div>
         <p>One Shot form</p>

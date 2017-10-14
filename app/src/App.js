@@ -26,7 +26,6 @@ class App extends Component{
     }
   }
   render(){
-    console.log('props from App', this.props);
     return(
       <div>
         <OneShotsList />
