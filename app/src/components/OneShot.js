@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const OneShot = (props) => {
-  console.log('props from one shot', props);
   return(
     <div>
       <hr/>

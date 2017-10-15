@@ -8,7 +8,7 @@ class OneShotForm extends Component{
     this.state={
       oneShotTitle: this.props.oneShot ? this.props.oneShot.oneShotTitle : '',
       oneShotMoney: this.props.oneShot ? this.props.oneShot.oneShotMoney : '',
-      deadline: this.props.oneShot ? this.props.oneShot.deadline : ''
+      deadline: this.props.oneShot ? moment(this.props.oneShot.deadline) : moment()
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -16,7 +16,7 @@ class OneShotForm extends Component{
     this.handleDateChange = this.handleDateChange.bind(this);
   }
   onChangeTitle(event){
-    const oneShotTitle = event.target.value.trim();
+    const oneShotTitle = event.target.value;
     this.setState(()=>({oneShotTitle}));
   }
   onChangeMoney(event){
@@ -26,22 +26,13 @@ class OneShotForm extends Component{
     }
   }
   handleDateChange(date){
-    this.setState(()=>({deadline: date.format('LL')}))
+    this.setState(()=>({deadline: date}))
   }
   handleOnSubmit(event){
     event.preventDefault();
-    if(this.state.deadline !== ''){
-      this.props.addOneShot({...this.state, done: false});
-    }else{
-        this.props.addOneShot({
-          ...this.state,
-          done: false,
-          deadline: moment().format('LL')
-        })
-    }
+    this.props.addOneShot({...this.state, done: false, deadline: this.state.deadline.format('LL')});
   }
   render(){
-    console.log('one shot form state', this.state);
     return(
       <div>
         <p>One Shot form</p>
@@ -50,7 +41,7 @@ class OneShotForm extends Component{
             onChange={this.onChangeTitle} placeholder="One Shot"/>
           <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
             onChange={this.onChangeMoney} placeholder="Cash"/>
-          <DatePicker selected={moment()} onChange={this.handleDateChange}/>
+          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}/>
           <button>Add</button>
         </form>
       </div>
