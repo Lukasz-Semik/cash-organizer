@@ -4,7 +4,7 @@ import history from './history';
 
 import LandingPage from '../src/LandingPage';
 import App from '../src/App';
-import Navigation from '../src/Navigation';
+import Navigation from '../src/navcomponents/Navigation';
 import SignUpPage from '../src/logincomponents/SignUpPage';
 import LoginPage from '../src/logincomponents/LoginPage';
 import OneShotCreator from '../src/components/OneShotCreator';

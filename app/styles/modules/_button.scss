@@ -1,0 +1,14 @@
+.button{
+  float: right;
+  text-decoration: none;
+  font-size: 20px;
+  padding: 0 10px;
+  line-height: 60px;
+  color: black;
+  font-weight: 900;
+
+  &--clear{
+    background: transparent;
+    border: none;
+  }
+}

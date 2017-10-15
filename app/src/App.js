@@ -20,12 +20,12 @@ class App extends Component{
     }
   }
   componentDidMount(){
-    const { user } = this.state;
-    if(!this.state.user){
-      this.props.history.push('/login');
-    }else{
+  //  const { user } = this.state;
+  //  if(!this.state.user){
+    //  this.props.history.push('/login');
+  //  }else{
       this.props.startTakeDbData();
-    }
+    //}
   }
   render(){
     return(
