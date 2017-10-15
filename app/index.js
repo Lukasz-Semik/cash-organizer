@@ -22,7 +22,7 @@ const store = storeConfig();
 
 store.subscribe(()=>{
   const state = store.getState();
-  console.log(state);
+  console.log('state from index.js', state);
 })
 
 ReactDOM.render(

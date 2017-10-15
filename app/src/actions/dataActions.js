@@ -1,6 +1,6 @@
 import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT,
   REMOVE_ONE_SHOT, EDIT_ONE_SHOT, ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP,
-  ADD_SHOPPING_LIST } from './action_names';
+  ADD_SHOPPING_LIST, REMOVE_SHOPPING_LIST, EDIT_SHOPPING_LIST } from './action_names';
 import { database, firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
@@ -22,9 +22,10 @@ export const startTakeDbData = () => {
           ...childSnapshot.val()
         }
       })
-      if((!tempUser.stdExpenses && !tempUser.oneShots)){
+      //if tere is no fetaures used, we are not preparing the object, just return simply user info.
+      if((!tempUser.stdExpenses && !tempUser.oneShots && !tempUser.shoppingLists)){
         dispatch(takeDbData(tempUser))
-      }else{
+      }else{ // preperation data from DB to use in app
         const tempOneShots = tempUser.oneShots;
         let tempOneShotsArr = [];
         for(let props in tempOneShots){
@@ -41,10 +42,21 @@ export const startTakeDbData = () => {
             stdExpId: props
           })
         }
+        const tempShoppingLists = tempUser.shoppingLists;
+        let tempShoppingListsArray = [];
+        console.log('temp shopping lists', tempShoppingLists);
+        for(let props in tempShoppingLists){
+          tempShoppingListsArray.push({
+            ...tempShoppingLists[props],
+            shoppingListId: props,
+            items: tempShoppingLists[props].items.split('***')
+          })
+        }
         const user = {
           ...tempUser,
           oneShots: tempOneShotsArr.length>0 ? tempOneShotsArr : null,
-          stdExpenses: tempStdExpensesArr.length>0 ? tempStdExpensesArr : null
+          stdExpenses: tempStdExpensesArr.length>0 ? tempStdExpensesArr : null,
+          shoppingLists: tempShoppingListsArray.length>0 ? tempShoppingListsArray : null
         }
         dispatch(takeDbData(user));
       }
@@ -155,7 +167,8 @@ export const startAddShoppingList = shoppingList => {
   const shoppingListForDB = {
     shoppingListTitle: shoppingList.shoppingListTitle,
     shoppingListMoney: shoppingList.shoppingListMoney,
-    items: shoppingList.items.join('***')
+    items: shoppingList.items.join('***'),
+    deadline: shoppingList.deadline
   }
   return dispatch => {
     return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists`)
@@ -164,11 +177,39 @@ export const startAddShoppingList = shoppingList => {
   }
 }
 
-// shoppingListTitle: this.props.shoppingList ? this.props.shoppingList.shoppingListTitle : '',
-// shoppingListMoney: this.props.shoppingList ? this.props.shoppingList.shoppingListMoney : '',
-// deadline: this.props.shoppingList ? moment(this.props.shoppingList.deadline) : moment(),
-// newItemTitle: '',
-// items: []
+export const editShoppingList = (shoppingList, shoppingListId) => ({
+  type: EDIT_SHOPPING_LIST,
+  shoppingList,
+  shoppingListId
+})
+
+export const startEditShoppingList = (shoppingList, shoppingListId) => {
+  const shoppingListForDB = {
+    shoppingListTitle: shoppingList.shoppingListTitle,
+    shoppingListMoney: shoppingList.shoppingListMoney,
+    items: shoppingList.items.join('***'),
+    deadline: shoppingList.deadline
+  }
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists/${shoppingListId}`)
+    .update(shoppingListForDB)
+    .then(()=>dispatch(removeOneShot(shoppingList, shoppingListId)))
+  }
+}
+
+
+export const removeShoppingList = (shoppingListId) => ({
+  type: REMOVE_SHOPPING_LIST,
+  shoppingList
+});
+
+export const startRemoveShoppingList = (shoppingListId) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists/${shoppingListId}`)
+    .remove()
+    .then(()=>dispatch(removeOneShot(shoppingListId)))
+  }
+}
 
 // -------- LOG OUT -----------------
 

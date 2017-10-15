@@ -41,7 +41,7 @@ class OneShotForm extends Component{
             onChange={this.onChangeTitle} placeholder="One Shot"/>
           <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
             onChange={this.onChangeMoney} placeholder="Cash"/>
-          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}/>
+          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange} dateFormat="LL"/>
           <button>Add</button>
         </form>
       </div>

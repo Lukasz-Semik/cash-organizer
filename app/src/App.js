@@ -7,6 +7,7 @@ import { startTakeDbData } from './actions/dataActions';
 
 import OneShotsList from './components/OneShotsList';
 import StdExpList from './components/StdExpList';
+import ShoppingListsList from './components/ShoppingListsList';
 
 
 
@@ -33,6 +34,7 @@ class App extends Component{
         <Link to="/oneshotcreator">Create One Shot</Link>
         <StdExpList />
         <Link to="/stdexpcreator">Create Standard Expense</Link>
+        <ShoppingListsList />
         <Link to="/shoppinglistcreator">Create Shopping List </Link>
       </div>
     );

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-//import OneShot from './OneShot';
+import ShoppingList from './ShoppingList';
 
 class ShoppingListsList extends Component {
 
@@ -12,7 +12,7 @@ class ShoppingListsList extends Component {
       return(
         <div>
           {this.props.shoppingLists.map((shoppingList, i)=>{
-            return(<OneShot key={shoppingList.shoppingListId} oneShot={shoppingList} />);
+            return(<ShoppingList key={shoppingList.shoppingListId} shoppingList={shoppingList} />);
           })}
         </div>
       );

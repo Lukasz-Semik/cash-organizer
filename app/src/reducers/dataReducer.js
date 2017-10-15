@@ -1,11 +1,12 @@
 import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT, EDIT_ONE_SHOT,
-  ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP, ADD_SHOPPING_LIST } from '../actions/action_names';
+  ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP, ADD_SHOPPING_LIST, REMOVE_SHOPPING_LIST } from '../actions/action_names';
 
 const userDataDefault = {};
 
 const dataReducer = (state=userDataDefault, action) => {
   let oneShots;
   let stdExpenses;
+  let shoppingLists;
   switch(action.type){
     case TAKE_DB_DATA:
       return action.user;
@@ -57,6 +58,14 @@ const dataReducer = (state=userDataDefault, action) => {
       }
     case ADD_SHOPPING_LIST:
       return state;
+    case REMOVE_SHOPPING_LIST:
+      shoppingLists = !!state.shoppingLists ?
+                        (state.shoppingLists.filter(shoppingList=>shoppingList !== action.shoppingListId)) :
+                        []
+      return {
+        ...state,
+        shoppingLists
+      }
     default:
       return state;
   }

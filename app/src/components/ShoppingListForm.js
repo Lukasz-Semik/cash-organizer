@@ -10,7 +10,7 @@ class ShoppingListForm extends Component{
       shoppingListMoney: this.props.shoppingList ? this.props.shoppingList.shoppingListMoney : '',
       deadline: this.props.shoppingList ? moment(this.props.shoppingList.deadline) : moment(),
       newItemTitle: '',
-      items: []
+      items: this.props.shoppingList ? this.props.shoppingList.items : []
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -60,18 +60,18 @@ class ShoppingListForm extends Component{
   }
   handleOnSubmit(event){
     event.preventDefault();
-    //this.props.addOneShot({...this.state, done: false, deadline: this.state.deadline.format('LL')});
+    this.props.addShoppingList({...this.state, done: false, deadline: this.state.deadline.format('LL')});
   }
   render(){
     return(
       <div>
         <p>Shopping list form</p>
         <form onSubmit={this.handleOnSubmit}>
-          <input type="text" name="shoppingListTitle" value={this.state.oneShotTitle}
+          <input type="text" name="shoppingListTitle" value={this.state.shoppingListTitle}
             onChange={this.onChangeTitle} placeholder="shoppingList"/>
-          <input type="text" name="shoppingListMoney" value={this.state.oneShotMoney}
+          <input type="text" name="shoppingListMoney" value={this.state.shoppingListMoney}
             onChange={this.onChangeMoney} placeholder="Cash"/>
-          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}/>
+          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange} dateFormat="LL"/>
           <button>Add</button>
         </form>
         <input type="text" placeholder="Item to buy title" name="newItemTitle"

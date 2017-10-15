@@ -12,6 +12,7 @@ import OneShotEditor from '../src/components/OneShotEditor';
 import StdExpCreator from '../src/components/StdExpCreator';
 import StdExpEditor from '../src/components/StdExpEditor';
 import ShoppingListCreator from '../src/components/ShoppingListCreator';
+import ShoppingListEditor from '../src/components/ShoppingListEditor';
 
 const Routing = () => (
   <Router history={history}>
@@ -27,6 +28,7 @@ const Routing = () => (
         <Route path='/stdexpcreator' component={StdExpCreator} />
         <Route path='/stdexpeditor/:id' component={StdExpEditor} />
         <Route path='/shoppinglistcreator' component={ShoppingListCreator} />
+        <Route path='/shoppinglisteditor/:id' component={ShoppingListEditor} />
       </Switch>
     </div>
   </Router>
