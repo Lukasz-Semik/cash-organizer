@@ -1,9 +1,11 @@
-import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT, EDIT_ONE_SHOT } from '../actions/action_names';
+import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT, EDIT_ONE_SHOT,
+ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP } from '../actions/action_names';
 
 const userDataDefault = {};
 
 const dataReducer = (state=userDataDefault, action) => {
   let oneShots;
+  let stdExpenses;
   switch(action.type){
     case TAKE_DB_DATA:
       return action.user;
@@ -20,7 +22,6 @@ const dataReducer = (state=userDataDefault, action) => {
         oneShots
       }
     case EDIT_ONE_SHOT:
-    consle.log('edit one shot', oneShots);
       oneShots = state.oneShots.map((oneShot)=>{
         if(oneShot.oneShotId === action.oneShotId){
           return {
@@ -31,6 +32,28 @@ const dataReducer = (state=userDataDefault, action) => {
       return{
         ...state,
         oneShots
+      }
+    case ADD_STD_EXP:
+      return state;
+    case REMOVE_STD_EXP:
+      stdExpenses = !!state.stdExpenses ?
+                    (state.stdExpenses.filter(stdExp=>stdExp !== action.stdExpId)) :
+                    []
+      return {
+        ...state,
+        stdExpenses
+      }
+    case EDIT_STD_EXP:
+      stdExpenses = state.stdExpenses.map((stdExp)=>{
+        if(stdExp.stdExpId === action.stdExpId){
+          return {
+            ...action.stdExp
+          }
+        }
+      })
+      return{
+        ...state,
+        stdExpenses
       }
     default:
       return state;

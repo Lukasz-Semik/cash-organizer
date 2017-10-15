@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { startTakeDbData } from './actions/dataActions';
 
 import OneShotsList from './components/OneShotsList';
+import StdExpList from './components/StdExpList';
 
 
 
@@ -30,6 +31,8 @@ class App extends Component{
       <div>
         <OneShotsList />
         <Link to="/oneshotcreator">Create One Shot</Link>
+        <StdExpList />
+        <Link to="/stdexpcreator">Create Standard Expense</Link>
 
       </div>
     );

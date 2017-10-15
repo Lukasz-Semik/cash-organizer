@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { startRemoveOneShot, startEditOneShot } from '../actions/dataActions';
 
@@ -30,6 +31,7 @@ class OneShotEditor extends Component {
         <p>Deadline: {this.props.oneShot.deadline}</p>
         <OneShotForm oneShot={this.props.oneShot} addOneShot={this.editOneShot}/>
         <button onClick={this.handleRemoving}>Delete</button>
+        <Link to="/app">Back</Link>
       </div>
     );
   }

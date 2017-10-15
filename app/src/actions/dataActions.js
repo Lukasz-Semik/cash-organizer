@@ -1,4 +1,5 @@
-import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT, EDIT_ONE_SHOT } from './action_names';
+import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT,
+  REMOVE_ONE_SHOT, EDIT_ONE_SHOT, ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP } from './action_names';
 import { database, firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
@@ -20,21 +21,29 @@ export const startTakeDbData = () => {
           ...childSnapshot.val()
         }
       })
-      if(tempUser.oneShots === 'empty' || !tempUser.oneShots){
+      if((!tempUser.stdExpenses && !tempUser.oneShots)){
         dispatch(takeDbData(tempUser))
       }else{
         const tempOneShots = tempUser.oneShots;
         let tempOneShotsArr = [];
         for(let props in tempOneShots){
-
           tempOneShotsArr.push({
             ...tempOneShots[props],
             oneShotId: props
           })
         }
+        const tempStdExpenses = tempUser.stdExpenses;
+        let tempStdExpensesArr = [];
+        for(let props in tempStdExpenses){
+          tempStdExpensesArr.push({
+            ...tempStdExpenses[props],
+            stdExpId: props
+          })
+        }
         const user = {
           ...tempUser,
-          oneShots: tempOneShotsArr
+          oneShots: tempOneShotsArr.length>0 ? tempOneShotsArr : null,
+          stdExpenses: tempStdExpensesArr.length>0 ? tempStdExpensesArr : null
         }
         dispatch(takeDbData(user));
       }
@@ -42,6 +51,7 @@ export const startTakeDbData = () => {
   }
 }
 
+// ---------- ONE SHOT SECTION ---------
 export const addOneShot = (oneShot) => ({
   type: ADD_ONE_SHOT,
   oneShot
@@ -87,7 +97,52 @@ export const startRemoveOneShot = (oneShotId) => {
   }
 }
 
+// ---------- STD EXPENSES SECTION ---------
 
+export const addStdExp = (stdExp) => ({
+  type: ADD_STD_EXP,
+  stdExp
+});
+
+export const startAddStdExp = (stdExp) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/stdExpenses`)
+    .push(stdExp)
+    .then((ref)=>{
+      dispatch(addStdExp({
+        id: ref,
+        ...stdExp
+      }))
+    });
+  }
+}
+
+export const editStdExp = (stdExp, stdExpId) => ({
+  type: EDIT_STD_EXP,
+  stdExp,
+  stdExpId
+})
+
+export const startEditStdExp = (stdExp, stdExpId) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/stdExpenses/${stdExpId}`)
+    .update(stdExp)
+    .then(()=>dispatch(removeOneShot(stdExp, stdExpId)))
+  }
+}
+
+export const removeStdExp = (stdExpId) => ({
+  type: REMOVE_STD_EXP,
+  stdExpId
+});
+
+export const startRemoveStdExp = (stdExpId) => {
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/stdExpenses/${stdExpId}`)
+    .remove()
+    .then(()=>dispatch(removeOneShot(stdExpId)))
+  }
+}
 
 export const logOut = () => ({type: LOG_OUT});
 
