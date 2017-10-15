@@ -1,5 +1,6 @@
 import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT,
-  REMOVE_ONE_SHOT, EDIT_ONE_SHOT, ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP } from './action_names';
+  REMOVE_ONE_SHOT, EDIT_ONE_SHOT, ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP,
+  ADD_SHOPPING_LIST } from './action_names';
 import { database, firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
@@ -143,6 +144,33 @@ export const startRemoveStdExp = (stdExpId) => {
     .then(()=>dispatch(removeOneShot(stdExpId)))
   }
 }
+
+// -------- SHOPPING LISTS SECTION --------
+export const addShoppingList = shoppingList => ({
+  type: ADD_SHOPPING_LIST,
+  shoppingList
+})
+
+export const startAddShoppingList = shoppingList => {
+  const shoppingListForDB = {
+    shoppingListTitle: shoppingList.shoppingListTitle,
+    shoppingListMoney: shoppingList.shoppingListMoney,
+    items: shoppingList.items.join('***')
+  }
+  return dispatch => {
+    return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists`)
+    .push(shoppingListForDB)
+    .then(()=>dispatch(addShoppingList(shoppingList)));
+  }
+}
+
+// shoppingListTitle: this.props.shoppingList ? this.props.shoppingList.shoppingListTitle : '',
+// shoppingListMoney: this.props.shoppingList ? this.props.shoppingList.shoppingListMoney : '',
+// deadline: this.props.shoppingList ? moment(this.props.shoppingList.deadline) : moment(),
+// newItemTitle: '',
+// items: []
+
+// -------- LOG OUT -----------------
 
 export const logOut = () => ({type: LOG_OUT});
 

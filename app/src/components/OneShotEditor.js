@@ -23,7 +23,7 @@ class OneShotEditor extends Component {
   }
 
   render(){
-    console.log('one shot editor props', this.props);
+    //console.log('one shot editor props', this.props);
     return(
       <div>
         <h3>{this.props.oneShot.oneShotTitle}</h3>

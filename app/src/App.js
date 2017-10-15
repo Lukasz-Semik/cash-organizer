@@ -33,7 +33,7 @@ class App extends Component{
         <Link to="/oneshotcreator">Create One Shot</Link>
         <StdExpList />
         <Link to="/stdexpcreator">Create Standard Expense</Link>
-
+        <Link to="/shoppinglistcreator">Create Shopping List </Link>
       </div>
     );
   }

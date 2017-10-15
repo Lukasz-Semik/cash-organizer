@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import StdExpEditor from './StdExpEditor';
 
 const StdExp = (props) => {
-  console.log('std exp props', props);
+
   return(
     <div>
       <hr/>

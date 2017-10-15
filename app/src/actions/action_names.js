@@ -6,3 +6,4 @@ export const EDIT_ONE_SHOT = 'EDIT_ONE_SHOT';
 export const ADD_STD_EXP = 'ADD_STD_EXP';
 export const REMOVE_STD_EXP = 'REMOVE_STD_EXP';
 export const EDIT_STD_EXP = 'EDIT_STD_EXP';
+export const ADD_SHOPPING_LIST = 'ADD_SHOPPING_LIST';

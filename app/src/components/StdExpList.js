@@ -18,7 +18,7 @@ class StdExpList extends Component{
     }
   }
   render(){
-    console.log('std exp list props', this.props);
+    //console.log('std exp list props', this.props);
     return(
       <div>
         <h4>std expenses list</h4>

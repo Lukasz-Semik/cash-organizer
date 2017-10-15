@@ -24,7 +24,7 @@ class StdExpEditor extends Component {
   }
 
   render(){
-    console.log('std exp editor props', this.props);
+
     return(
       <div>
         <h3>{this.props.stdExp.stdExpTitle}</h3>

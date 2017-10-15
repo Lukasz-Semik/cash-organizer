@@ -1,5 +1,5 @@
 import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT, REMOVE_ONE_SHOT, EDIT_ONE_SHOT,
-ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP } from '../actions/action_names';
+  ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP, ADD_SHOPPING_LIST } from '../actions/action_names';
 
 const userDataDefault = {};
 
@@ -55,6 +55,8 @@ const dataReducer = (state=userDataDefault, action) => {
         ...state,
         stdExpenses
       }
+    case ADD_SHOPPING_LIST:
+      return state;
     default:
       return state;
   }
