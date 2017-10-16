@@ -1,8 +1,10 @@
 @import 'globals/globals';
 @import 'globals/mixins';
 @import 'globals/variables';
+@import 'modules/grid';
+@import 'modules/wrappers';
 @import 'modules/button';
 @import 'modules/header';
 @import 'modules/summaryDisplay';
-@import 'modules/wrappers';
 @import 'modules/form';
+@import 'modules/list';

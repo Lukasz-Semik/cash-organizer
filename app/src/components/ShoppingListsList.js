@@ -7,7 +7,7 @@ class ShoppingListsList extends Component {
 
   generateShoppingListsList(){
     if(!this.props.shoppingLists || this.props.shoppingLists === 'empty'){
-      return(<div>Empty</div>)
+      return(<div className="list__empty-msg"><i>Add item to start</i></div>)
     }else{
       return(
         <div>
@@ -21,7 +21,8 @@ class ShoppingListsList extends Component {
   render(){
     return(
       <div>
-        <h4>Shopping Lists List</h4>
+        <h4 className="list__title">Shopping Lists</h4>
+        <div className="list__separator"></div>
         {this.generateShoppingListsList()}
       </div>
     );

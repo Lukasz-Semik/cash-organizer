@@ -8,7 +8,7 @@ class OneShotsList extends Component {
 
   generateOneShotList(){
     if(!this.props.oneShots || this.props.oneShots === 'empty'){
-      return(<div>Empty</div>)
+      return(<div className="list__empty-msg"><i>Add item to start</i></div>)
     }else{
       return(
         <div>
@@ -22,7 +22,8 @@ class OneShotsList extends Component {
   render(){
     return(
       <div>
-        <h4>One Shots List</h4>
+        <h4 className="list__title">One Shots</h4>
+        <div className="list__separator"></div>
         {this.generateOneShotList()}
       </div>
     );

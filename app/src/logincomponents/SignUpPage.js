@@ -49,7 +49,7 @@ class SignUpPage extends Component{
   render(){
     return(
       <div className="wrapper-form">
-        <h2 className="form__title">SignUpPage</h2>
+        <h2 className="form__title">Let's Sign Up</h2>
         <form onSubmit={this.handleSubmit} className="form">
           <input type="text" name="username" placeholder="username" className="form__input"
             onChange={this.onChangeUsername} value={this.state.username}/>

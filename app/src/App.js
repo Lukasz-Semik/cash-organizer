@@ -20,22 +20,40 @@ class App extends Component{
     }
   }
   componentDidMount(){
-    const { user } = this.state;
-    if(!this.state.user){
-      this.props.history.push('/login');
-    }else{
-      this.props.startTakeDbData();
-    }
+    // const { user } = this.state;
+    // if(!this.state.user){
+    //   this.props.history.push('/login');
+    // }else{
+       this.props.startTakeDbData();
+    // }
   }
   render(){
     return(
-      <div>
-        <OneShotsList />
-        <Link to="/oneshotcreator">Create One Shot</Link>
-        <StdExpList />
-        <Link to="/stdexpcreator">Create Standard Expense</Link>
-        <ShoppingListsList />
-        <Link to="/shoppinglistcreator">Create Shopping List </Link>
+      <div className="wrapper">
+        <div className="row">
+
+          <div className="col col--6">
+            <div className="list">
+              <OneShotsList />
+              <Link className="list__add-item" to="/oneshotcreator">+</Link>
+            </div>
+          </div>
+
+          <div className="col col--6">
+            <div className="list">
+              <StdExpList />
+              <Link className="list__add-item" to="/stdexpcreator">+</Link>
+            </div>
+          </div>
+
+          <div className="col col--6">
+            <div className="list">
+              <ShoppingListsList />
+              <Link className="list__add-item" to="/shoppinglistcreator">+</Link>
+            </div>
+          </div>
+
+        </div>
       </div>
     );
   }

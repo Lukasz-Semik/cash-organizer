@@ -22,9 +22,7 @@
     display: block;
     width: 200px;
     border-radius: 20px;
-    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
-    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    @include box-shadow;
     transition: all 0.1s ease-in-out;
 
     &:hover{
