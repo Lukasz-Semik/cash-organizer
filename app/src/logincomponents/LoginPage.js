@@ -4,7 +4,6 @@ import { firebaseApp } from '../../firebase';
 class LoginPage extends Component{
   constructor(props){
     super(props);
-
     this.state={
       email: '',
       password: ''
@@ -31,12 +30,14 @@ class LoginPage extends Component{
   }
   render(){
     return(
-      <div>
-        <h1>LoginPage</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="email" placeholder="email" onChange={this.onChangeEmail} value={this.state.email}/>
-          <input type="password" name="password" placeholder="password" onChange={this.onChangePass} value={this.state.password}/>
-          <button>Log In</button>
+      <div className="wrapper-form">
+        <h2 className="form__title">Let's Log In</h2>
+        <form onSubmit={this.handleSubmit} className="form">
+          <input type="text" name="email" placeholder="email" className="form__input"
+            onChange={this.onChangeEmail} value={this.state.email} />
+          <input type="password" name="password" placeholder="password" className="form__input"
+            onChange={this.onChangePass} value={this.state.password}/>
+          <button className="button button--login">Log In</button>
         </form>
       </div>
     );

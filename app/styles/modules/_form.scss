@@ -1,0 +1,24 @@
+.form{
+  &__input{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+    font-size: 25px;
+    margin-bottom: 50px;
+    border: none;
+    background-color: #ddd;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    &:focus{
+      outline: none;
+      background-color: #aaa;
+      border: 2px solid black;
+    }
+  }
+  &__title{
+    text-align: center;
+    margin: 0 auto 30px 0;
+    font-size: 30px;
+  }
+}

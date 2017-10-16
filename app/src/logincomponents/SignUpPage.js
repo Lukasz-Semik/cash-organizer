@@ -48,13 +48,17 @@ class SignUpPage extends Component{
   }
   render(){
     return(
-      <div>
-        <h1>SignUpPage</h1>
-        <form onSubmit={this.handleSubmit}>
-          <input type="text" name="username" placeholder="username" onChange={this.onChangeUsername} value={this.state.username}/>
-          <input type="text" name="email" placeholder="email" onChange={this.onChangeEmail} value={this.state.email}/>
-          <input type="password" name="password" placeholder="password" onChange={this.onChangePass} value={this.state.password}/>
-          <button>Submit</button>
+      <div className="wrapper-form">
+        <h2 className="form__title">SignUpPage</h2>
+        <form onSubmit={this.handleSubmit} className="form">
+          <input type="text" name="username" placeholder="username" className="form__input"
+            onChange={this.onChangeUsername} value={this.state.username}/>
+          <input type="text" name="email" placeholder="email" className="form__input"
+            onChange={this.onChangeEmail} value={this.state.email}/>
+          <input type="password" name="password" className="form__input"
+            placeholder="password" onChange={this.onChangePass}
+            value={this.state.password}/>
+          <button className="button button--login">Submit</button>
         </form>
       </div>
     );

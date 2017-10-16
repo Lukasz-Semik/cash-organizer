@@ -5,15 +5,31 @@
   line-height: 60px;
   color: black;
   font-weight: 900;
+  border: none;
   &--pull-right{
     float: right;
   }
   &--clear{
     background: transparent;
-    border: none;
   }
   &:hover{
     color: #444;
     cursor: pointer;
+  }
+  &--login{
+    background-color: $btn-green;
+    margin: 0 auto;
+    display: block;
+    width: 200px;
+    border-radius: 20px;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
+    transition: all 0.1s ease-in-out;
+
+    &:hover{
+      box-shadow: none;
+      color: black;
+    }
   }
 }
