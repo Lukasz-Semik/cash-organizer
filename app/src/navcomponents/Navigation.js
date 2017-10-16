@@ -12,12 +12,12 @@ class Navigation extends Component{
   render(){
     console.log('props from navigation: ', this.props)
     //nav for logged in user.
-    if(this.props.user.username !== 'not logged in'){
+    if(this.props.username !== 'not logged in'){
       return(
         <header className="header">
           <nav className="header__navigation">
-            <h1 className="header__title">Hello {this.props.user.username} </h1>
-            <button className="button button--clear" onClick={()=>this.props.startLogOut()}>LogOut</button>
+            <h1 className="header__title">Hello <span className="header__username"><em>{this.props.user.username}</em></span> </h1>
+            <button className="button button--clear button--pull-right" onClick={()=>this.props.startLogOut()}>LogOut</button>
             <SummaryDisplay user={this.props.user} />
           </nav>
         </header>
@@ -27,8 +27,8 @@ class Navigation extends Component{
         <header className="header">
           <nav className="header__navigation">
             <h1 className="header__title">Cash Organizer</h1>
-            <NavLink className="button" to="/login">Log In</NavLink>
-            <NavLink className="button" to="/signup">Sign Up</NavLink>
+            <NavLink className="button button--pull-right" to="/login">Log In</NavLink>
+            <NavLink className="button button--pull-right" to="/signup">Sign Up</NavLink>
           </nav>
         </header>
       );
@@ -37,9 +37,10 @@ class Navigation extends Component{
 }
 
 const mapStateToProps = state => {
-  const user = state.usersData || 'not logged in';
+  const username = state.usersData.username || 'not logged in';
+  const user = state.usersData;
   return {
-    user
+    username, user
   }
 }
 

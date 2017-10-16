@@ -1,14 +1,19 @@
 .button{
-  float: right;
   text-decoration: none;
   font-size: 20px;
   padding: 0 10px;
   line-height: 60px;
   color: black;
   font-weight: 900;
-
+  &--pull-right{
+    float: right;
+  }
   &--clear{
     background: transparent;
     border: none;
+  }
+  &:hover{
+    color: #444;
+    cursor: pointer;
   }
 }

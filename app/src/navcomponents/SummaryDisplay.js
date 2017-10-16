@@ -4,9 +4,8 @@ const SummaryDisplay = (props) => {
   const {
     oneShots =[],
     stdExpenses = [],
-    shoppingList = []
+    shoppingLists = []
   } = props.user;
-  console.log('sum display one shots', oneShots);
   let oneShotsTotalMoney = 0;
   if(!!oneShots){
     for(let i=0; i<oneShots.length; i++){
@@ -16,22 +15,22 @@ const SummaryDisplay = (props) => {
   let stdExpensesTotalMoney= 0;
   if(!!stdExpenses){
     for(let i=0; i<stdExpenses.length; i++){
-      stdExpensesTotalMoney += parseFloat(stdExpenses[i].stdExpensestMoney);
+      stdExpensesTotalMoney += parseFloat(stdExpenses[i].stdExpMoney);
     }
   }
   let shoppingListTotalMoney= 0;
-  if(!!shoppingList){
-    for(let i=0; i<shoppingList.length; i++){
-      shoppingListTotalMoney += parseFloat(shoppingList[i].shoppingListMoney);
+  if(!!shoppingLists){
+    for(let i=0; i<shoppingLists.length; i++){
+      shoppingListTotalMoney += parseFloat(shoppingLists[i].shoppingListMoney);
     }
   }
   const total = oneShotsTotalMoney + stdExpensesTotalMoney + shoppingListTotalMoney;
   return(
   <div className="summaryDisplay">
     <p><em> Total: {total}</em></p>
-    <p><em>One Shots Total: {oneShotsTotalMoney}</em></p>
-    <p><em>Std Expenses Total: {stdExpensesTotalMoney}</em></p>
-    <p><em>Shopping List Total: {shoppingListTotalMoney}</em></p>
+    <p><em>One Shots: {oneShotsTotalMoney}</em></p>
+    <p><em>Std Expenses: {stdExpensesTotalMoney}</em></p>
+    <p><em>Shopping Lists: {shoppingListTotalMoney}</em></p>
   </div>)
 }
 
