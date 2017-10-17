@@ -13,7 +13,7 @@ const StdExp = (props) => {
           <p className="list__item--cash">Cash: {props.stdExp.stdExpMoney}</p>
           <p>{props.stdExp.term}. of each month</p>
           <Link to={`/stdexpeditor/${props.stdExp.stdExpId}`}
-            className="edit-btn">
+            className="btn btn--top-right btn--orange">
             <i>Edit</i>
           </Link>
         </div>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
 
@@ -45,13 +46,19 @@ class ShoppingListForm extends Component{
   }
   showItemsList(){
     if(this.state.items.length<1){
-      return(<p>list is empty</p>);
+      return(
+        <div className="wrapper-for-shopping-list">
+          <div className="list__empty-msg">
+            <i>list is empty</i>
+          </div>
+        </div>
+      );
     }else{
       return(
-        <div>
+        <div className="wrapper-for-shopping-list ">
           {this.state.items.map((item,i)=>{
             return(
-              <p key={i}>{item}</p>
+              <p className="list__shopping-items"key={i}>{item}</p>
             );
           })}
         </div>
@@ -65,18 +72,30 @@ class ShoppingListForm extends Component{
   render(){
     return(
       <div>
-        <p>Shopping list form</p>
-        <form onSubmit={this.handleOnSubmit}>
-          <input type="text" name="shoppingListTitle" value={this.state.shoppingListTitle}
-            onChange={this.onChangeTitle} placeholder="shoppingList"/>
-          <input type="text" name="shoppingListMoney" value={this.state.shoppingListMoney}
-            onChange={this.onChangeMoney} placeholder="Cash"/>
-          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange} dateFormat="LL"/>
-          <button>Add</button>
-        </form>
-        <input type="text" placeholder="Item to buy title" name="newItemTitle"
-          value={this.state.newItemTitle} onChange={this.handleItemTitleChange} />
-        <button onClick={this.addNewItem}>Add item</button>
+        <div className="wrapper-helper wrapper-helper--move-up wrapper-helper--padd-bot">
+          <h4 className="form__title">{this.props.oneShot ? 'Edit' : 'Create'} Shopping List</h4>
+          <form onSubmit={this.handleOnSubmit} className="form">
+            <input type="text" name="shoppingListTitle" value={this.state.shoppingListTitle}
+              onChange={this.onChangeTitle} placeholder="shoppingList" className="form__input"/>
+            <input type="text" name="shoppingListMoney" value={this.state.shoppingListMoney}
+              onChange={this.onChangeMoney} placeholder="Cash" className="form__input"/>
+            <div className="form__date-picker">
+              <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}
+                dateFormat="LL" className="form__input form__input--bot-margin"/>
+            </div>
+            <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Modify' : 'Add'}</button>
+          </form>
+          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Back</Link>
+        </div>
+        <div className="wrapper-for-shopping-list">
+          <input type="text" placeholder="Item to buy title" name="newItemTitle"
+            className="form__input form__input--shopping-list-size form__input--bot-margin"
+            value={this.state.newItemTitle} onChange={this.handleItemTitleChange} />
+          <button onClick={this.addNewItem}
+            className="btn btn--green-const btn--md btn--center">
+            <i>Add Item</i>
+          </button>
+        </div>
         {this.showItemsList()}
       </div>
     );

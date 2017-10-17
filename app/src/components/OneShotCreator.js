@@ -23,10 +23,8 @@ class OneShotCreator extends Component {
   }
   render(){
     return(
-      <div>
-        <h4>One Shot Creator</h4>
+      <div className="wrapper-form wrapper-form--item-size">
         <OneShotForm addOneShot={this.addOneShot}/>
-        <Link to="/app">Back</Link>
       </div>
     );
   }

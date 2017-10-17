@@ -26,12 +26,21 @@ class OneShotEditor extends Component {
     //console.log('one shot editor props', this.props);
     return(
       <div>
-        <h3>{this.props.oneShot.oneShotTitle}</h3>
-        <p>Cash: {this.props.oneShot.oneShotMoney}</p>
-        <p>Deadline: {this.props.oneShot.deadline}</p>
-        <OneShotForm oneShot={this.props.oneShot} addOneShot={this.editOneShot}/>
-        <button onClick={this.handleRemoving}>Delete</button>
-        <Link to="/app">Back</Link>
+        <div className="list list--sm list--center list--margin-top list--small-padding-bot">
+          <div className="list__item">
+            <h4 className="list__item--title list__item--title-details"><em>{this.props.oneShot.oneShotTitle}</em></h4>
+            <div className="list__item--descr">
+              <p>Cash: {this.props.oneShot.oneShotMoney}</p>
+              <p>Deadline: {this.props.oneShot.deadline}</p>
+            </div>
+            <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
+          </div>
+        </div>
+        <div className="wrapper-form wrapper-form--item-size">
+          <div className="wrapper-helper">
+            <OneShotForm oneShot={this.props.oneShot} addOneShot={this.editOneShot}/>
+          </div>
+        </div>
       </div>
     );
   }

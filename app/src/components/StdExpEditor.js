@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { startRemoveStdExp, startEditStdExp } from '../actions/dataActions';
 
@@ -27,12 +26,21 @@ class StdExpEditor extends Component {
 
     return(
       <div>
-        <h3>{this.props.stdExp.stdExpTitle}</h3>
-        <p>Cash: {this.props.stdExp.stdExpMoney}</p>
-        <p>Deadline: {this.props.stdExp.term} of each month</p>
-        <StdExpForm stdExp={this.props.stdExp} addOneStdExpense={this.editStdExp}/>
-        <button onClick={this.handleRemoving}>Delete</button>
-        <Link to="/app">Back</Link>
+        <div className="list list--sm list--center list--margin-top list--small-padding-bot">
+          <div className="list__item">
+            <h4 className="list__item--title list__item--title-details"><em>{this.props.stdExp.stdExpTitle}</em></h4>
+            <div className="list__item--descr">
+              <p>Cash: {this.props.stdExp.stdExpMoney}</p>
+              <p>Deadline: {this.props.stdExp.term} of each month</p>
+            </div>
+            <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
+          </div>
+        </div>
+        <div className="wrapper-form wrapper-form--item-size">
+          <div className="wrapper-helper">
+            <StdExpForm stdExp={this.props.stdExp} addOneStdExpense={this.editStdExp}/>
+          </div>
+        </div>
       </div>
     );
   }

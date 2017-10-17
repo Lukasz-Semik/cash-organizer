@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startAddStdExp} from '../actions/dataActions';
 import { firebaseApp } from '../../firebase';
@@ -24,9 +23,9 @@ class StdExpCreator extends Component {
   render(){
     return(
       <div>
-        <h4>Stadard Expenses Creator</h4>
-        <StdExpForm addOneStdExpense={this.addOneStdExp}/>
-        <Link to="/app">Back</Link>
+        <div className="wrapper-form wrapper-form--item-size">
+          <StdExpForm addOneStdExpense={this.addOneStdExp}/>
+        </div>
       </div>
     );
   }

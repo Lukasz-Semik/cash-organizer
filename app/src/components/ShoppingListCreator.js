@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startAddShoppingList } from '../actions/dataActions';
 import { firebaseApp } from '../../firebase';
@@ -24,10 +23,8 @@ class ShoppingListCreator extends Component {
   render(){
     console.log('props from shopping list creator', this.props)
     return(
-      <div>
-        <h4>Shopping List Creator</h4>
+      <div className="wrapper-form wrapper-form--item-size">
         <ShoppingListForm addShoppingList={this.addShoppingList}/>
-        <Link to="/app">Back</Link>
       </div>
     );
   }

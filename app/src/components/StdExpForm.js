@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-//import DatePicker from 'react-datepicker';
-//import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class StdExpForm extends Component{
   constructor(props){
@@ -8,7 +7,7 @@ class StdExpForm extends Component{
     this.state={
       stdExpTitle: this.props.stdExp ? this.props.stdExp.stdExpTitle : '',
       stdExpMoney: this.props.stdExp ? this.props.stdExp.stdExpMoney : '',
-      term: this.props.stdExp ? this.props.stdExp.term : 1
+      term: this.props.stdExp ? this.props.stdExp.term : ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
     this.handleOnSubmit = this.handleOnSubmit.bind(this);
@@ -38,17 +37,19 @@ class StdExpForm extends Component{
   }
   render(){
     return(
-      <div>
-        <p>Std Exp form</p>
-        <form onSubmit={this.handleOnSubmit}>
-          <input type="text" name="stdExpTitle" value={this.state.stdExpTitle}
+      <div className="wrapper-helper">
+        <h4 className="form__title">{this.props.oneShot ? 'Edit' : 'Create'} Standard Expense</h4>
+        <form onSubmit={this.handleOnSubmit} className="form">
+          <input type="text" name="stdExpTitle" value={this.state.stdExpTitle} className="form__input form__input--item-size"
             onChange={this.onChangeTitle} placeholder="stdExpTitle"/>
-          <input type="text" name="stdExpMoney" value={this.state.stdExpMoney}
+          <input type="text" name="stdExpMoney" value={this.state.stdExpMoney} className="form__input form__input--item-size"
             onChange={this.onChangeMoney} placeholder="Cash"/>
           <input type="number" name="term" placeholder="Last day of payment of each month"
+            className="form__input form__input--item-size"
             onChange={this.onChangeTerm} value={this.state.term}/>
-          <button>{this.props.stdExp ? 'Edit' : 'Add'}</button>
+          <button className="btn btn--green-const btn--left-bot-v2 btn--lg">{this.props.stdExp ? 'Edit' : 'Add'}</button>
         </form>
+        <Link to="/app" className="btn btn--orange-const btn--right-bot-v2 btn--lg">Back</Link>
       </div>
     );
   }

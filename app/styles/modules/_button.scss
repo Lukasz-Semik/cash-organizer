@@ -32,16 +32,73 @@
   }
 }
 
-.edit-btn{
+.btn{
   position: absolute;
-  top: -18px;
-  right: 10px;
   text-decoration: none;
   color: #aaa;
   font-size: 15px;
+  background-color: transparent;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+  &--lg{
+    font-size: 25px;
+  }
+  &--md{
+    font-size: 20px;
+  }
   transition: all 0.1s ease-in-out;
   &:hover{
     transform: scale(1.2);
+  }
+  &--orange-const{
     color: darkorange;
   }
+  &--green-const{
+    color: darkgreen;
+  }
+  &--red-const{
+    color: red;
+  }
+  &--center{
+    left: 50%;
+    transform: translateX(-50%);
+    &:hover{
+      transform: translateX(-50%) scale(1.2);
+    }
+  }
+  &--right-bot{
+    right: 10px;
+    bottom: -38px;
+  }
+  &--right-bot-v2{
+    right: 10px;
+    bottom: -90px;
+  }
+  &--left-bot{
+    left: 10px;
+    bottom: -38px;
+  }
+  &--left-bot-v2{
+    left: 10px;
+    bottom: -90px;
+  }
+  &--top-right{
+    top: -18px;
+    right: 10px;
+  }
+  &--top-right-detail-v{
+    top: 5px;
+    right: 10px;
+  }
+  &--orange{
+    &:hover{
+      color: darkorange;
+    }
+  }
+  &:focus{
+    outline: none;
+  }
 }
+// btn--orange-const btn--right-bot

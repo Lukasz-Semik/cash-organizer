@@ -11,7 +11,7 @@ const OneShot = (props) => {
           <p>Deadline: <br/>{props.oneShot.deadline}</p>
         </div>
         <Link to={`/oneshoteditor/${props.oneShot.oneShotId}`}
-          className="edit-btn">
+          className="btn btn--orange btn--top-right">
           <i>Edit</i>
         </Link>
       </div>

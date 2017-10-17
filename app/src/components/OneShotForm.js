@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import DatePicker from 'react-datepicker';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 class OneShotForm extends Component{
   constructor(props){
@@ -34,17 +35,22 @@ class OneShotForm extends Component{
   }
   render(){
     return(
-      <div>
-        <p>One Shot form</p>
-        <form onSubmit={this.handleOnSubmit}>
-          <input type="text" name="oneShotTitle" value={this.state.oneShotTitle}
-            onChange={this.onChangeTitle} placeholder="One Shot"/>
-          <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
-            onChange={this.onChangeMoney} placeholder="Cash"/>
-          <DatePicker selected={this.state.deadline} onChange={this.handleDateChange} dateFormat="LL"/>
-          <button>Add</button>
-        </form>
-      </div>
+        <div className="wrapper-helper">
+          <h4 className="form__title">{this.props.oneShot ? 'Edit' : 'Create'} One Shot</h4>
+          <form onSubmit={this.handleOnSubmit} className="form">
+            <input type="text" name="oneShotTitle" value={this.state.oneShotTitle}
+              onChange={this.onChangeTitle} placeholder="One Shot" className="form__input"/>
+            <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
+              onChange={this.onChangeMoney} placeholder="Cash" className="form__input"/>
+            <div className="form__date-picker">
+              <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}
+              dateFormat="LL" className="form__input" />
+            </div>
+            <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Modify' : 'Add'}</button>
+          </form>
+          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Back</Link>
+        </div>
+
     );
   }
 }

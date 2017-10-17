@@ -11,7 +11,7 @@ const ShoppingList = (props) => {
           <p>Deadline: <br/>{props.shoppingList.deadline}</p>
         </div>
         <Link to={`/shoppinglisteditor/${props.shoppingList.shoppingListId}`}
-          className="edit-btn">
+          className="btn btn--top-right btn--orange">
           <i>Edit</i>
         </Link>
       </div>

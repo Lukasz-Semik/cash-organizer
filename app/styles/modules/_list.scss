@@ -4,6 +4,15 @@
   margin: 0 2%;
   padding-bottom: 15px;
   @include box-shadow;
+  &--sm{
+    width: 480px;
+  }
+  &--small-padding-bot{
+    padding-bottom: 0;
+  }
+  &--center{
+    margin: 30px auto -15px auto;
+  }
   &__title{
     font-size: 20px;
     padding: 15px 0;
@@ -24,6 +33,12 @@
     &--title{
       font-size: 15px;
       text-align: center;
+    }
+    &--title-details{
+      margin-top: 0;
+      margin-bottom: 0;
+      padding: 20px;
+      font-size: 20px;
     }
     &--descr{
       display: flex;
@@ -60,11 +75,25 @@
     &:hover{
       background-color: $btn-green;
       transform: scale(1.2);
+      cursor: pointer;
+    }
+    &--scale{
+      transform: scale(1.4);
+      top: 10px;
+      right: 10px;
+      &:hover{
+        transform: scale(1.6);
+      }
     }
   }
   &__separator{
     border: 0.5px solid $btn-green;
     width: 90%;
     margin: 0 auto;
+  }
+  &__shopping-items{
+    text-align: center;
+    font-size: 20px;
+    letter-spacing: 1px;
   }
 }
