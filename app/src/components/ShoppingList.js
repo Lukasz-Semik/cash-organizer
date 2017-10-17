@@ -5,10 +5,15 @@ const ShoppingList = (props) => {
   return(
     <div>
       <div className="list__item">
-        <h4>{props.shoppingList.shoppingListTitle}</h4>
-        <p>Cash: {props.shoppingList.shoppingListMoney}</p>
-        <p>Deadline: {props.shoppingList.deadline}</p>
-        <Link to={`/shoppinglisteditor/${props.shoppingList.shoppingListId}`}>View and edit</Link>
+        <h4 className="list__item--title">{props.shoppingList.shoppingListTitle}</h4>
+        <div className="list__item--descr">
+          <p>Cash: {props.shoppingList.shoppingListMoney}</p>
+          <p>Deadline: <br/>{props.shoppingList.deadline}</p>
+        </div>
+        <Link to={`/shoppinglisteditor/${props.shoppingList.shoppingListId}`}
+          className="edit-btn">
+          <i>Edit</i>
+        </Link>
       </div>
       <div className="list__separator"></div>
     </div>

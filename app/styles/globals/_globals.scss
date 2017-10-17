@@ -6,3 +6,6 @@ body {
   background: -webkit-linear-gradient(to right, #3CD3AD, #4CB8C4);
   background: linear-gradient(to right, #3CD3AD, #4CB8C4);
 }
+input:-webkit-autofill{
+  background-color: #aaaaaa !important;
+}

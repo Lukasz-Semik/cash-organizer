@@ -36,7 +36,7 @@ class LoginPage extends Component{
           <input type="text" name="email" placeholder="email" className="form__input"
             onChange={this.onChangeEmail} value={this.state.email} />
           <input type="password" name="password" placeholder="password" className="form__input"
-            onChange={this.onChangePass} value={this.state.password}/>
+            onChange={this.onChangePass} />
           <button className="button button--login">Log In</button>
         </form>
       </div>

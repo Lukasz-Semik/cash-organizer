@@ -8,10 +8,15 @@ const StdExp = (props) => {
   return(
     <div>
       <div className="list__item">
-        <h3>{props.stdExp.stdExpTitle}</h3>
-        <p>Cash: {props.stdExp.stdExpMoney}</p>
-        <p>Last day of payment: {props.stdExp.term}. of each month</p>
-        <Link to={`/stdexpeditor/${props.stdExp.stdExpId}`}>Edit</Link>
+        <h4 className="list__item--title">{props.stdExp.stdExpTitle}</h4>
+        <div className="list__item--descr">
+          <p className="list__item--cash">Cash: {props.stdExp.stdExpMoney}</p>
+          <p>{props.stdExp.term}. of each month</p>
+          <Link to={`/stdexpeditor/${props.stdExp.stdExpId}`}
+            className="edit-btn">
+            <i>Edit</i>
+          </Link>
+        </div>
       </div>
       <div className="list__separator"></div>
     </div>

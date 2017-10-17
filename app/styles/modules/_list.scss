@@ -15,10 +15,12 @@
     color: #aaa;
     text-align: center;
     font-size: 12px;
+    margin-top: 5px;
   }
   &__item{
     margin-bottom: 10px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
+    position: relative;
     &--title{
       font-size: 15px;
       text-align: center;
@@ -28,8 +30,11 @@
       justify-content: space-between;
       align-items: center;
       padding: 0 10px;
-      color: #aaa;
+      color: darkred;
       font-weight: 400;
+    }
+    &--descr-std-exp{
+      color: black;
     }
     &--cash{
       color: darkred;

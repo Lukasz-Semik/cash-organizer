@@ -31,3 +31,17 @@
     }
   }
 }
+
+.edit-btn{
+  position: absolute;
+  top: -18px;
+  right: 10px;
+  text-decoration: none;
+  color: #aaa;
+  font-size: 15px;
+  transition: all 0.1s ease-in-out;
+  &:hover{
+    transform: scale(1.2);
+    color: darkorange;
+  }
+}

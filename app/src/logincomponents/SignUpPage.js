@@ -57,7 +57,7 @@ class SignUpPage extends Component{
             onChange={this.onChangeEmail} value={this.state.email}/>
           <input type="password" name="password" className="form__input"
             placeholder="password" onChange={this.onChangePass}
-            value={this.state.password}/>
+            />
           <button className="button button--login">Submit</button>
         </form>
       </div>

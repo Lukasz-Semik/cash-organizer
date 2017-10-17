@@ -10,7 +10,10 @@ const OneShot = (props) => {
           <p className="list__item--cash">Cash: {props.oneShot.oneShotMoney}</p>
           <p>Deadline: <br/>{props.oneShot.deadline}</p>
         </div>
-        <Link to={`/oneshoteditor/${props.oneShot.oneShotId}`}>Edit</Link>
+        <Link to={`/oneshoteditor/${props.oneShot.oneShotId}`}
+          className="edit-btn">
+          <i>Edit</i>
+        </Link>
       </div>
       <div className="list__separator"></div>
     </div>
