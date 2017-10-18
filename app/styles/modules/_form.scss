@@ -36,5 +36,21 @@
     display: flex;
     justify-content: center;
   }
-
+}
+.form-msg{
+  color: darkred;
+  position: absolute;
+  bottom: 0;
+  text-align: center;
+  width: 100%;
+  &--hints{
+    color: #aaa;
+    bottom: -20px;
+  }
+  &--pull-up{
+    bottom: 55px;
+  }
+  &--pull-down{
+    bottom: -55px;
+  }
 }

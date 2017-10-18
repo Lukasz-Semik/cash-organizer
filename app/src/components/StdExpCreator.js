@@ -13,7 +13,7 @@ class StdExpCreator extends Component {
   }
   componentDidMount(){
     if(!firebaseApp.auth().currentUser){
-      this.props.history.push('/login');
+      //this.props.history.push('/login');
     }
   }
   addOneStdExp(stdExp){

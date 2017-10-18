@@ -88,6 +88,10 @@
     top: -18px;
     right: 10px;
   }
+  &--top-left{
+    top: -18px;
+    left: 10px;
+  }
   &--top-right-detail-v{
     top: 5px;
     right: 10px;
@@ -95,6 +99,11 @@
   &--orange{
     &:hover{
       color: darkorange;
+    }
+  }
+  &--green{
+    &:hover{
+      color: darkgreen;
     }
   }
   &:focus{

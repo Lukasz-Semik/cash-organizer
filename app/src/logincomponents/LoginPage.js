@@ -6,7 +6,8 @@ class LoginPage extends Component{
     super(props);
     this.state={
       email: '',
-      password: ''
+      password: '',
+      error: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -18,19 +19,23 @@ class LoginPage extends Component{
     const { email, password } = this.state;
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then(()=>{history.push('/app')})
-    .catch(error=>console.log(error));
+    .catch(error=>{
+      console.log(error);
+      this.setState(()=>({error: error.message}));
+    });
   }
   onChangeEmail(event){
     const email = event.target.value;
-    this.setState(()=>({ email }));
+    this.setState(()=>({ email, error: '' }));
   }
   onChangePass(event){
     const password = event.target.value;
-    this.setState(()=>({ password }));
+    this.setState(()=>({ password, error: '' }));
   }
   render(){
+    console.log('login state', this.state)
     return(
-      <div className="wrapper-form">
+      <div className="wrapper-form wrapper-helper">
         <h2 className="form__title">Let's Log In</h2>
         <form onSubmit={this.handleSubmit} className="form">
           <input type="text" name="email" placeholder="email" className="form__input"
@@ -39,6 +44,7 @@ class LoginPage extends Component{
             onChange={this.onChangePass} />
           <button className="button button--login">Log In</button>
         </form>
+        <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
       </div>
     );
   }

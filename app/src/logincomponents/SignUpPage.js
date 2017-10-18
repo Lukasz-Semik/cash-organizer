@@ -8,7 +8,8 @@ class SignUpPage extends Component{
     this.state={
       email: '',
       password: '',
-      username: ''
+      username: '',
+      error: ''
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
@@ -17,22 +18,24 @@ class SignUpPage extends Component{
   }
   handleSubmit(event){
     event.preventDefault();
-    const { email, password, username } = this.state;
-    const history = this.props.history;
-    //const oneShots = 'empty';
-    //const stdExpenses = 'empty';
-    firebaseApp.auth().createUserWithEmailAndPassword(email, password)
-    .then(()=>{
-      const userId = firebaseApp.auth().currentUser.uid;
-      database.ref(`user/${userId}`).set({
-        email,
-        username,
+    if(this.state.username.length < 2){
+      this.setState(()=>({error: 'The username must be at least 3 characters long'}));
+    }else{
+      const { email, password, username } = this.state;
+      const history = this.props.history;
+      firebaseApp.auth().createUserWithEmailAndPassword(email, password)
+      .then(()=>{
+        const userId = firebaseApp.auth().currentUser.uid;
+        database.ref(`user/${userId}`).set({
+          email,
+          username,
+        })
+        history.push('/app')
       })
-      history.push('/app')
-    })
-    .catch(error=>{
-      console.log(error);
-    })
+      .catch(error=>{
+        this.setState(()=>({error: error.message}));
+      })
+    }
   }
   onChangeEmail(event){
     const email = event.target.value;
@@ -48,7 +51,7 @@ class SignUpPage extends Component{
   }
   render(){
     return(
-      <div className="wrapper-form">
+      <div className="wrapper-form wrapper-helper">
         <h2 className="form__title">Let's Sign Up</h2>
         <form onSubmit={this.handleSubmit} className="form">
           <input type="text" name="username" placeholder="username" className="form__input"
@@ -60,6 +63,7 @@ class SignUpPage extends Component{
             />
           <button className="button button--login">Submit</button>
         </form>
+        <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
       </div>
     );
   }

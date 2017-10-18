@@ -13,6 +13,8 @@ import StdExpCreator from '../src/components/StdExpCreator';
 import StdExpEditor from '../src/components/StdExpEditor';
 import ShoppingListCreator from '../src/components/ShoppingListCreator';
 import ShoppingListEditor from '../src/components/ShoppingListEditor';
+import SpecificShoppingList from '../src/components/SpecificShoppingList';
+
 
 const Routing = () => (
   <Router history={history}>
@@ -29,6 +31,7 @@ const Routing = () => (
         <Route path='/stdexpeditor/:id' component={StdExpEditor} />
         <Route path='/shoppinglistcreator' component={ShoppingListCreator} />
         <Route path='/shoppinglisteditor/:id' component={ShoppingListEditor} />
+        <Route path='/specificshoppinglist/:id' component={SpecificShoppingList} />
       </Switch>
     </div>
   </Router>

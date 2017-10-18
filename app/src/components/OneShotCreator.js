@@ -14,7 +14,7 @@ class OneShotCreator extends Component {
   }
   componentDidMount(){
     if(!firebaseApp.auth().currentUser){
-      this.props.history.push('/login');
+      //this.props.history.push('/login');
     }
   }
   addOneShot(oneShot){
