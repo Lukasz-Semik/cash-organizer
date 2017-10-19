@@ -14,6 +14,7 @@ class ShoppingListEditor extends Component {
   }
 
   handleRemoving(){
+    localStorage.removeItem(`shoppingList${this.props.shoppingList.shoppingListId}`);
     this.props.startRemoveShoppingList(this.props.shoppingList.shoppingListId);
     this.props.history.push('/app');
   }

@@ -68,7 +68,7 @@ class ShoppingListForm extends Component{
           {this.state.items.map((item,i)=>{
             return(
               <div className="wrapper-helper" key={i}>
-                <span className="list__add-item list__add-item--red" onClick={this.remove.bind(this, i)}>
+                <span className="list__add-item list__add-item--red list__add-item--pull-little-up" onClick={this.remove.bind(this, i)}>
                   <b>-</b>
                 </span>
                 <p className="list__shopping-items">{item}</p>

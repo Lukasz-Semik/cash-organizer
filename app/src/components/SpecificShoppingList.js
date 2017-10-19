@@ -1,9 +1,62 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 class SpecificShoppingList extends Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      shoppingListId: '',
+      items: [{
+        item: '',
+        done: false
+      }]
+    }
+  }
+  componentDidMount(){
+
+    const shoppingListData = localStorage.getItem(`shoppingList${this.props.shoppingList.shoppingListId}`);
+    const shoppingList = JSON.parse(shoppingListData);
+    console.log(shoppingList)
+    const { items, shoppingListId } = this.props.shoppingList;
+    const newItems = items.map((item,i) => {
+      let done = false;
+      if(!!shoppingList && shoppingList.items[i].item === this.props.shoppingList.items[i]){
+        done = !!shoppingList.items[i] ? shoppingList.items[i].done : false;
+      }
+      return{
+        item,
+        done
+      }
+    })
+    this.setState(()=>({
+      shoppingListId,
+      items: newItems
+    }))
+  }
+  componentDidUpdate(){
+    const taskData = JSON.stringify(this.state);
+    localStorage.setItem(`shoppingList${this.state.shoppingListId}`, taskData);
+  }
+  changeTaskStatus(index){
+    const newItems = this.state.items.map((item, i)=>{
+      if(i===index){
+        return {
+          ...item,
+          done: !item.done
+        }
+      }else{
+        return { ...item };
+      }
+    })
+    this.setState(()=>({
+      items: newItems
+    }))
+  }
   render(){
-    console.log(this.props.shoppingList)
+    console.log('specific props', this.props.shoppingList);
+    console.log('specific state', this.state);
+
     return(
       <div className="list list--sm list--center list--margin-top">
         <div className="list__item">
@@ -12,10 +65,22 @@ class SpecificShoppingList extends Component{
           </h4>
           <div className="list__item--descr">
             <p className="list__item--cash">Cash: {this.props.shoppingList.shoppingListMoney}</p>
-            <p>Deadline: <br/>{this.props.shoppingList.deadline} d</p>
+            <p>Deadline: <br/>{this.props.shoppingList.deadline}</p>
           </div>
         </div>
-
+        {this.state.items.map((item,i)=>(
+          <div className="wrapper-helper" key={i}>
+            {console.log(item.item)}
+            <span className={`list__add-item ${item.done ? 'list__add-item--orange' : 'list__add-item--green'}
+              list__add-item--pull-little-up`}
+              onClick={this.changeTaskStatus.bind(this, i)}>
+              <b>v</b>
+            </span>
+            <p className={`list__shopping-items ${item.done ? 'list__shopping-items--done' : ''}`}>{ item.item }</p>
+            <div className="list__separator list__separator--orange"></div>
+          </div>
+        ))}
+        <Link to="/app" className="btn btn--orange-const btn--top-right btn--pull-down">Back</Link>
       </div>
     );
   }
@@ -29,20 +94,3 @@ const mapStateToProps = (state, props)=>{
   }
 }
 export default connect(mapStateToProps)(SpecificShoppingList);
-
-// <div className={`list-hiding-div ${props.classModifier}`}>
-//   <div className="list__item">
-//     <h4 className={`list__item--title ${marginResetForHiddenList}`}>
-//       <em>{props.stdExp.stdExpTitle}</em>
-//     </h4>
-//     <div className="list__item--descr">
-//       <p className="list__item--cash">Cash: {props.stdExp.stdExpMoney}</p>
-//       <p>Deadline: <br/>{props.stdExp.term}.of each month</p>
-//     </div>
-//     <Link to={`/stdexpeditor/${props.stdExp.stdExpId}`}
-//       className="btn btn--top-right btn--orange">
-//       <i>Edit</i>
-//     </Link>
-//   </div>
-//   <div className="list__separator"></div>
-// </div>

@@ -23,7 +23,7 @@ class OneShotEditor extends Component {
   }
 
   render(){
-    //console.log('one shot editor props', this.props);
+    console.log('one shot editor props', this.props);
     return(
       <div>
         <div className="list list--sm list--center list--margin-top list--small-padding-bot">
