@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import numeral from 'numeral';
 
 import { startRemoveOneShot, startEditOneShot } from '../actions/dataActions';
 
@@ -30,8 +31,15 @@ class OneShotEditor extends Component {
           <div className="list__item">
             <h4 className="list__item--title list__item--title-details"><em>{this.props.oneShot.oneShotTitle}</em></h4>
             <div className="list__item--descr">
-              <p>Cash: {this.props.oneShot.oneShotMoney}</p>
-              <p>Deadline: {this.props.oneShot.deadline}</p>
+              <p className="list__item--black">Cash:
+                <span className="list__item--cash">
+                  &nbsp;{numeral(this.props.oneShot.oneShotMoney).format('0,00.00')}
+                </span>
+                <span className="unit-list"> pln</span>
+              </p>
+              <p className="list__item--black">Deadline:
+                {this.props.oneShot.deadline}
+              </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
           </div>

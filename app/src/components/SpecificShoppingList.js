@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import numeral from 'numeral';
 
 class SpecificShoppingList extends Component{
   constructor(props){
@@ -64,13 +65,17 @@ class SpecificShoppingList extends Component{
             <em>{this.props.shoppingList.shoppingListTitle}</em>
           </h4>
           <div className="list__item--descr">
-            <p className="list__item--cash">Cash: {this.props.shoppingList.shoppingListMoney}</p>
+            <p className="list__item--black">Cash:
+              <span className="list__item--cash">
+                &nbsp;{numeral(this.props.shoppingList.shoppingListMoney).format('0,00.00')}
+              </span>
+              <span className="unit-list"> pln</span>
+            </p>
             <p>Deadline: <br/>{this.props.shoppingList.deadline}</p>
           </div>
         </div>
         {this.state.items.map((item,i)=>(
           <div className="wrapper-helper" key={i}>
-            {console.log(item.item)}
             <span className={`list__add-item ${item.done ? 'list__add-item--orange' : 'list__add-item--green'}
               list__add-item--pull-little-up`}
               onClick={this.changeTaskStatus.bind(this, i)}>

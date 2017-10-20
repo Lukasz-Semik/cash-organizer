@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import numeral from 'numeral';
 
 const ShoppingList = (props) => {
   let marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
@@ -10,8 +11,15 @@ const ShoppingList = (props) => {
           <em>{props.shoppingList.shoppingListTitle}</em>
         </h4>
         <div className="list__item--descr">
-          <p>Cash: {props.shoppingList.shoppingListMoney}</p>
-          <p>Deadline: <br/>{props.shoppingList.deadline}</p>
+          <p className="list__item--black">Cash:
+            <span className="list__item--cash">
+              &nbsp;{numeral(props.shoppingList.shoppingListMoney).format('0,00.00')}
+            </span>
+            <span className="unit-list"> pln</span>
+          </p>
+          <p className="list__item--black">Deadline:
+            <br/><span className="list__item--cash">{props.shoppingList.deadline}</span>
+          </p>
         </div>
         <Link to={`/shoppinglisteditor/${props.shoppingList.shoppingListId}`}
           className="btn btn--top-right btn--orange">

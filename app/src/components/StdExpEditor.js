@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import numeral from 'numeral';
 
 import { startRemoveStdExp, startEditStdExp } from '../actions/dataActions';
+import { checkWhen } from '../helper-functions/checkWhen';
 
 import StdExpForm from './StdExpForm';
 
@@ -23,6 +25,19 @@ class StdExpEditor extends Component {
   }
 
   render(){
+    const { stdExpMoney, term } = this.props.stdExp;
+    const when = checkWhen(term);
+    const difference = parseInt(when.slice(3,5));
+    let deadlineClassModifier = 'grey';
+    if(difference > 20 ){
+      deadlineClassModifier = 'grey';
+    }
+    if(difference <=20 && difference > 10){
+      deadlineClassModifier = 'orange';
+    }
+    if(difference < 10){
+      deadlineClassModifier = 'red';
+    }
 
     return(
       <div>
@@ -30,8 +45,15 @@ class StdExpEditor extends Component {
           <div className="list__item">
             <h4 className="list__item--title list__item--title-details"><em>{this.props.stdExp.stdExpTitle}</em></h4>
             <div className="list__item--descr">
-              <p>Cash: {this.props.stdExp.stdExpMoney}</p>
-              <p>Deadline: {this.props.stdExp.term} of each month</p>
+              <p className="list__item--black">Cash:
+                <span className="list__item--cash">
+                  &nbsp;{numeral(this.props.stdExp.stdExpMoney).format('0,00.00')}
+                </span>
+                <span className="unit-list"> pln</span>
+              </p>
+                <p className="list__item--black">
+                  {term}. każdego miesiąca <br/><span className={`list__item--${deadlineClassModifier}`}>{when}</span>
+                </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
           </div>
