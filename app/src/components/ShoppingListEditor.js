@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import numeral from 'numeral';
+import moment from 'moment';
 
 import { startRemoveShoppingList, startEditShoppingList } from '../actions/dataActions';
+import { checkWhen } from '../helper-functions/checkWhen';
 
 import ShoppingListForm from './ShoppingListForm';
 
@@ -24,16 +27,27 @@ class ShoppingListEditor extends Component {
   }
 
   render(){
-    console.log('shopping list editor props', this.props);
-    //console.log('shopping list editor state', this.state);
+    const { shoppingListMoney, deadline, shoppingListTitle } = this.props.shoppingList;
+    const when = checkWhen(null, false, moment(deadline));
     return(
       <div>
         <div className="list list--sm list--center list--margin-top list--small-padding-bot">
           <div className="list__item">
-            <h4 className="list__item--title list__item--title-details"><em>{this.props.shoppingList.shoppingListTitle}</em></h4>
+            <h4 className="list__item--title list__item--title-details">
+              <em>{this.props.shoppingList.shoppingListTitle}</em>
+            </h4>
             <div className="list__item--descr">
-              <p>Cash: {this.props.shoppingList.shoppingListMoney}</p>
-              <p>Deadline: {this.props.shoppingList.deadline}</p>
+              <p className="list__item--black">Cash:
+                <span className="list__item--cash">
+                  &nbsp;{numeral(shoppingListMoney).format('0,00.00')}
+                </span>
+                <span className="unit-list"> pln</span>
+              </p>
+              <p className="list__item--black">
+                {deadline}
+                <br/>
+                <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+              </p>
             </div>
             <button className="btn btn--red-const btn--top-right-detail-v"
               onClick={this.handleRemoving}>

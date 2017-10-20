@@ -26,19 +26,7 @@ class StdExpEditor extends Component {
 
   render(){
     const { stdExpMoney, term } = this.props.stdExp;
-    const when = checkWhen(term);
-    const difference = parseInt(when.slice(3,5));
-    let deadlineClassModifier = 'grey';
-    if(difference > 20 ){
-      deadlineClassModifier = 'grey';
-    }
-    if(difference <=20 && difference > 10){
-      deadlineClassModifier = 'orange';
-    }
-    if(difference < 10){
-      deadlineClassModifier = 'red';
-    }
-
+    const when = checkWhen(term,true);
     return(
       <div>
         <div className="list list--sm list--center list--margin-top list--small-padding-bot">
@@ -52,7 +40,7 @@ class StdExpEditor extends Component {
                 <span className="unit-list"> pln</span>
               </p>
                 <p className="list__item--black">
-                  {term}. każdego miesiąca <br/><span className={`list__item--${deadlineClassModifier}`}>{when}</span>
+                  {term}. każdego miesiąca <br/><span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
                 </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 
 import { startRemoveOneShot, startEditOneShot } from '../actions/dataActions';
+import { checkWhen } from '../helper-functions/checkWhen';
 
 import OneShotForm from './OneShotForm';
 
@@ -24,7 +25,8 @@ class OneShotEditor extends Component {
   }
 
   render(){
-    console.log('one shot editor props', this.props);
+    const { oneShotMoney, deadline } = this.props.oneShot;
+    const when = checkWhen(null, false, deadline);
     return(
       <div>
         <div className="list list--sm list--center list--margin-top list--small-padding-bot">
@@ -33,12 +35,15 @@ class OneShotEditor extends Component {
             <div className="list__item--descr">
               <p className="list__item--black">Cash:
                 <span className="list__item--cash">
-                  &nbsp;{numeral(this.props.oneShot.oneShotMoney).format('0,00.00')}
+                  &nbsp;{numeral(oneShotMoney).format('0,00.00')}
                 </span>
                 <span className="unit-list"> pln</span>
               </p>
-              <p className="list__item--black">Deadline:
-                {this.props.oneShot.deadline}
+
+              <p className="list__item--black">
+                {deadline}
+                <br/>
+                <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
               </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>

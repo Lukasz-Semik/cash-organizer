@@ -6,20 +6,7 @@ import numeral from 'numeral';
 const StdExp = (props) => {
   let marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
   const { stdExpTitle, stdExpMoney, stdExpId, term } = props.stdExp;
-  const when = checkWhen(term);
-  console.log('when', when);
-  const difference = parseInt(when.slice(3,5));
-  console.log(difference);
-  let deadlineClassModifier = 'grey';
-  if(difference > 20 ){
-    deadlineClassModifier = 'grey';
-  }
-  if(difference <=20 && difference > 10){
-    deadlineClassModifier = 'orange';
-  }
-  if(difference < 10){
-    deadlineClassModifier = 'red';
-  }
+  const when = checkWhen(term,true);
   return(
     <div className={`list-hiding-div ${props.classModifier}`}>
       <div className="list__item">
@@ -30,10 +17,10 @@ const StdExp = (props) => {
           <p className="list__item--black">Cash:
             <span className="list__item--cash">
               &nbsp;{numeral(stdExpMoney).format('0,00.00')}</span>
-            <span className="unit-list"> pln</span>  
+            <span className="unit-list"> pln</span>
           </p>
           <p className="list__item--black">
-            {term}. każdego miesiąca <br/><span className={`list__item--${deadlineClassModifier}`}>{when}</span>
+            {term}. każdego miesiąca <br/><span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
           </p>
         </div>
         <Link to={`/stdexpeditor/${stdExpId}`}

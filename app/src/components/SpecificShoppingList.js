@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
+import moment from 'moment';
+
+import { checkWhen } from '../helper-functions/checkWhen';
 
 class SpecificShoppingList extends Component{
   constructor(props){
@@ -55,23 +58,26 @@ class SpecificShoppingList extends Component{
     }))
   }
   render(){
-    console.log('specific props', this.props.shoppingList);
-    console.log('specific state', this.state);
-
+    const { shoppingListTitle, shoppingListMoney, deadline } = this.props.shoppingList;
+    const when = checkWhen(null, false, moment(deadline));
     return(
       <div className="list list--sm list--center list--margin-top">
         <div className="list__item">
           <h4 className="list__item--title list__item--title-details">
-            <em>{this.props.shoppingList.shoppingListTitle}</em>
+            <em>{shoppingListTitle}</em>
           </h4>
           <div className="list__item--descr">
             <p className="list__item--black">Cash:
               <span className="list__item--cash">
-                &nbsp;{numeral(this.props.shoppingList.shoppingListMoney).format('0,00.00')}
+                &nbsp;{numeral(shoppingListMoney).format('0,00.00')}
               </span>
               <span className="unit-list"> pln</span>
             </p>
-            <p>Deadline: <br/>{this.props.shoppingList.deadline}</p>
+            <p className="list__item--black">
+              {deadline}
+              <br/>
+              <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+            </p>
           </div>
         </div>
         {this.state.items.map((item,i)=>(
