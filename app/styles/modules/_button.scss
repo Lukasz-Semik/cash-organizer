@@ -39,8 +39,8 @@
   font-size: 15px;
   background-color: transparent;
   border: none;
-  &:hover{
-    cursor: pointer;
+  &--small-size{
+    font-size: 12px;
   }
   &--lg{
     font-size: 25px;
@@ -51,6 +51,10 @@
   transition: all 0.1s ease-in-out;
   &:hover{
     transform: scale(1.2);
+    cursor: pointer;
+  }
+  &--small-scale-hover:hover{
+    transform: scale(1.1);
   }
   &--orange-const{
     color: darkorange;
@@ -99,6 +103,14 @@
     top: 5px;
     right: 10px;
   }
+  &--top-left-detail-v{
+    top: 5px;
+    left: 10px;
+  }
+  &--top-left-detail-v2{
+    top: 5px;
+    left: 65px;
+  }
   &--orange{
     &:hover{
       color: darkorange;
@@ -109,6 +121,10 @@
       color: darkgreen;
     }
   }
+  &--red:hover{
+    color: red;
+  }
+
   &:focus{
     outline: none;
   }

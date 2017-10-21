@@ -20,7 +20,6 @@ class LoginPage extends Component{
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then(()=>{history.push('/app')})
     .catch(error=>{
-      console.log(error);
       this.setState(()=>({error: error.message}));
     });
   }
@@ -33,7 +32,6 @@ class LoginPage extends Component{
     this.setState(()=>({ password, error: '' }));
   }
   render(){
-    console.log('login state', this.state)
     return(
       <div className="wrapper-form wrapper-helper">
         <h2 className="form__title">Let's Log In</h2>

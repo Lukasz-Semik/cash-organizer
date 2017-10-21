@@ -5,7 +5,7 @@ import numeral from 'numeral';
 
 const StdExp = (props) => {
   let marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
-  const { stdExpTitle, stdExpMoney, stdExpId, term } = props.stdExp;
+  const { stdExpTitle, stdExpMoney, stdExpId, term, lastPayment } = props.stdExp;
   const when = checkWhen(term,true);
   return(
     <div className={`list-hiding-div ${props.classModifier}`}>
@@ -27,6 +27,7 @@ const StdExp = (props) => {
           className="btn btn--top-right btn--orange">
           <i>Edit</i>
         </Link>
+        <p className="list__last-payment">Ostatnia wpłata: {lastPayment}</p>
       </div>
       <div className="list__separator"></div>
     </div>

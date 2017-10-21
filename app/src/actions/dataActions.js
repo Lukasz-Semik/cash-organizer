@@ -44,7 +44,6 @@ export const startTakeDbData = () => {
         }
         const tempShoppingLists = tempUser.shoppingLists;
         let tempShoppingListsArray = [];
-        console.log('temp shopping lists', tempShoppingLists);
         for(let props in tempShoppingLists){
           tempShoppingListsArray.push({
             ...tempShoppingLists[props],
@@ -188,7 +187,8 @@ export const startEditShoppingList = (shoppingList, shoppingListId) => {
     shoppingListTitle: shoppingList.shoppingListTitle,
     shoppingListMoney: shoppingList.shoppingListMoney,
     items: shoppingList.items.join('***'),
-    deadline: shoppingList.deadline
+    deadline: shoppingList.deadline,
+    done: shoppingList.done
   }
   return dispatch => {
     return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists/${shoppingListId}`)

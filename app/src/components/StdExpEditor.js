@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import numeral from 'numeral';
+import moment from 'moment';
 
 import { startRemoveStdExp, startEditStdExp } from '../actions/dataActions';
 import { checkWhen } from '../helper-functions/checkWhen';
@@ -13,6 +14,11 @@ class StdExpEditor extends Component {
 
     this.editStdExp = this.editStdExp.bind(this);
     this.handleRemoving = this.handleRemoving.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
+    this.resetStatus = this.resetStatus.bind(this);
+    this.state = {
+      lastPayment: this.props.stdExp.lastPayment
+    }
   }
 
   handleRemoving(){
@@ -23,8 +29,18 @@ class StdExpEditor extends Component {
     this.props.startEditStdExp(stdExp, this.props.stdExp.stdExpId)
     this.props.history.push('/app');
   }
-
+  changeStatus(){
+    this.setState(prevState=>({
+      lastPayment: moment().format('LL')
+    }));
+  }
+  resetStatus(){
+    this.setState(()=>({
+      lastPayment: 'Nigdy'
+    }));
+  }
   render(){
+    console.log('std exp editor state', this.state.lastPayment);
     const { stdExpMoney, term } = this.props.stdExp;
     const when = checkWhen(term,true);
     return(
@@ -41,14 +57,26 @@ class StdExpEditor extends Component {
               </p>
                 <p className="list__item--black">
                   {term}. każdego miesiąca <br/><span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+                <br/><span className="list__last-payment list__last-payment--details">
+                  <i>Ostatnia wpłata: {this.state.lastPayment}</i>
+                </span>
                 </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
+              <button onClick={this.changeStatus}
+                className={`btn btn--top-left-detail-v smooth-transition-std btn--small-size btn--green`}>
+                Oznacz
+              </button>
+              <button onClick={this.resetStatus}
+                className={`btn btn--top-left-detail-v2 smooth-transition-std btn--small-size btn--red`}>
+                Reset
+              </button>
           </div>
         </div>
         <div className="wrapper-form wrapper-form--item-size">
           <div className="wrapper-helper">
-            <StdExpForm stdExp={this.props.stdExp} addOneStdExpense={this.editStdExp}/>
+            <StdExpForm lastPayment={this.state.lastPayment} duringEdition={true}
+              stdExp={this.props.stdExp} addOneStdExpense={this.editStdExp}/>
           </div>
         </div>
       </div>

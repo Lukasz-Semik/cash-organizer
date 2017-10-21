@@ -25,6 +25,17 @@
     font-size: 12px;
     margin-top: 5px;
   }
+  &__last-payment{
+    color: #aaa;
+    position: absolute;
+    top: -18px;
+    left: 10px;
+    font-size: 12px;
+    margin: 0;
+    &--details{
+      position: static;
+    }
+  }
   &__item{
     margin-bottom: 10px;
     padding-bottom: 5px;
@@ -69,6 +80,9 @@
     }
     &--orange{
       color: orange;
+    }
+    &--green{
+      color: green;
     }
   }
   &__add-item{

@@ -21,7 +21,6 @@ class SpecificShoppingList extends Component{
 
     const shoppingListData = localStorage.getItem(`shoppingList${this.props.shoppingList.shoppingListId}`);
     const shoppingList = JSON.parse(shoppingListData);
-    console.log(shoppingList)
     const { items, shoppingListId } = this.props.shoppingList;
     const newItems = items.map((item,i) => {
       let done = false;

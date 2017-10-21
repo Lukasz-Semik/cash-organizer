@@ -12,6 +12,7 @@ class ShoppingListForm extends Component{
       deadline: this.props.shoppingList ? moment(this.props.shoppingList.deadline) : moment(),
       newItemTitle: '',
       items: this.props.shoppingList ? this.props.shoppingList.items : [],
+      done: this.props.shoppingList ? this.props.shoppingList.done : false,
       error: ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -90,11 +91,13 @@ class ShoppingListForm extends Component{
     }else if(items.length<1){
       this.setState(()=>({error: 'Shpping list is empty...'}))
     }else{
+      const done = this.props.duringEdition ? this.props.done : this.state.done
       this.props.addShoppingList({
         deadline: this.state.deadline.format('LL'),
         shoppingListTitle,
         shoppingListMoney,
-        items
+        items,
+        done
       });
     }
   }

@@ -10,6 +10,7 @@ class OneShotForm extends Component{
       oneShotTitle: this.props.oneShot ? this.props.oneShot.oneShotTitle : '',
       oneShotMoney: this.props.oneShot ? this.props.oneShot.oneShotMoney : '',
       deadline: this.props.oneShot ? moment(this.props.oneShot.deadline) : moment(),
+      done: this.props.oneShot ? this.props.oneShot.done : false,
       error: ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -32,16 +33,19 @@ class OneShotForm extends Component{
   }
   handleOnSubmit(event){
     event.preventDefault();
-    const { oneShotTitle, oneShotMoney, deadline } = this.state; 
+    const { oneShotTitle, oneShotMoney, deadline } = this.state;
     if(oneShotMoney === ''){
       this.setState(()=>({error: 'Money input is empty...'}))
     }else if(oneShotTitle === ''){
       this.setState(()=>({error: 'The title must be at least 3 characters long'}))
     }else{
+      //if one shot is during edition, take data from props.
+      const done = this.props.duringEdition ? this.props.done : this.state.done
       this.props.addOneShot({
         oneShotTitle,
         oneShotMoney,
-        deadline: this.state.deadline.format('LL')
+        deadline: this.state.deadline.format('LL'),
+        done
       });
     }
   }

@@ -10,7 +10,6 @@ import SummaryDisplay from './SummaryDisplay';
 
 class Navigation extends Component{
   render(){
-    console.log('props from navigation: ', this.props)
     //nav for logged in user.
     if(this.props.username !== 'not logged in'){
       return(

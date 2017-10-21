@@ -8,6 +8,7 @@ class StdExpForm extends Component{
       stdExpTitle: this.props.stdExp ? this.props.stdExp.stdExpTitle : '',
       stdExpMoney: this.props.stdExp ? this.props.stdExp.stdExpMoney : '',
       term: this.props.stdExp ? this.props.stdExp.term : '',
+      lastPayment: this.props.stdExp ? this.props.stdExp.lastPayment : 'Nigdy',
       error: ''
     }
     this.onChangeTitle = this.onChangeTitle.bind(this);
@@ -39,10 +40,12 @@ class StdExpForm extends Component{
     }else if(term<1 || term>28 || term ===''){
       this.setState(()=>({error: 'Date is empty or wrong. Not all month has 29 or more days...'}))
     }else{
+      const lastPayment = this.props.duringEdition ? this.props.lastPayment : this.state.lastPayment
       this.props.addOneStdExpense({
         stdExpTitle,
         stdExpMoney,
-        term
+        term,
+        lastPayment
       });
     }
   }

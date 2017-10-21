@@ -11,9 +11,12 @@ const ShoppingList = (props) => {
     shoppingListTitle,
     shoppingListMoney,
     deadline,
-    shoppingListId
+    shoppingListId,
+    done
   } = props.shoppingList;
-  const when = checkWhen(null, false, moment(deadline));
+  const when = checkWhen(null,false, moment(deadline));
+  const deadlineClassModifier = done ? 'green' : when.deadlineClassModifier;
+  const time = done ? 'Zapłacone' : when.time;
   return(
     <div className={`list-hiding-div ${props.classModifier}`}>
       <div className="list__item">
@@ -31,7 +34,7 @@ const ShoppingList = (props) => {
           <p className="list__item--black">
             {deadline}
             <br/>
-            <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+            <span className={`list__item--${deadlineClassModifier}`}>{time}</span>
           </p>
         </div>
         <Link to={`/shoppinglisteditor/${shoppingListId}`}

@@ -11,8 +11,14 @@ import OneShotForm from './OneShotForm';
 class OneShotEditor extends Component {
   constructor(props){
     super(props);
+
+    this.state = {
+      done: this.props.oneShot.done
+    }
+
     this.editOneShot = this.editOneShot.bind(this);
     this.handleRemoving = this.handleRemoving.bind(this);
+    this.changeStatus = this.changeStatus.bind(this);
   }
 
   handleRemoving(){
@@ -23,10 +29,18 @@ class OneShotEditor extends Component {
     this.props.startEditOneShot(oneShot, this.props.oneShot.oneShotId);
     this.props.history.push('/app');
   }
+  changeStatus(){
+    this.setState(prevState=>({
+      done: !prevState.done
+    }));
+  }
 
   render(){
     const { oneShotMoney, deadline } = this.props.oneShot;
     const when = checkWhen(null, false, deadline);
+    const deadlineClassModifier = this.state.done ? 'green' : when.deadlineClassModifier;
+    const time = this.state.done ? 'Zrobione' : when.time;
+    const classDoneBtnModifier = this.state.done ? 'btn--green-const' : '';
     return(
       <div>
         <div className="list list--sm list--center list--margin-top list--small-padding-bot">
@@ -43,15 +57,22 @@ class OneShotEditor extends Component {
               <p className="list__item--black">
                 {deadline}
                 <br/>
-                <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+                <span className={`list__item--${deadlineClassModifier} smooth-transition-std`}>{time}</span>
               </p>
             </div>
-            <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Delete</button>
+            <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">
+              Delete
+            </button>
+            <button onClick={this.changeStatus}
+              className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std`}>
+              {this.state.done ? 'Zapłacone' : 'Oznacz'}
+            </button>
           </div>
         </div>
         <div className="wrapper-form wrapper-form--item-size">
           <div className="wrapper-helper">
-            <OneShotForm oneShot={this.props.oneShot} addOneShot={this.editOneShot}/>
+            <OneShotForm oneShot={this.props.oneShot} done={this.state.done} duringEdition={true}
+              addOneShot={this.editOneShot}/>
           </div>
         </div>
       </div>

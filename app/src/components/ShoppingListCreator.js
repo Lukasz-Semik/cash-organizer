@@ -21,7 +21,6 @@ class ShoppingListCreator extends Component {
     history.push('/app');
   }
   render(){
-    console.log('props from shopping list creator', this.props)
     return(
       <div className="wrapper-form wrapper-form--item-size">
         <ShoppingListForm addShoppingList={this.addShoppingList}/>

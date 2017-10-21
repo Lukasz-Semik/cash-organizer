@@ -5,9 +5,14 @@ import moment from 'moment';
 import { checkWhen } from '../helper-functions/checkWhen';
 
 const OneShot = (props) => {
-  let marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
-  const { oneShotTitle, oneShotMoney, deadline, oneShotId } = props.oneShot
+  console.log('one shot props', props);
+  const marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
+  const { oneShotTitle, oneShotMoney, deadline, oneShotId, done } = props.oneShot
   const when = checkWhen(null,false, moment(deadline));
+  const deadlineClassModifier = done ? 'green' : when.deadlineClassModifier;
+  const time = done ? 'Zapłacone' : when.time;
+
+
   return(
     <div className={`list-hiding-div ${props.classModifier}`}>
       <div className="list__item">
@@ -24,7 +29,7 @@ const OneShot = (props) => {
           <p className="list__item--black">
             {deadline}
             <br/>
-            <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+            <span className={`list__item--${deadlineClassModifier}`}>{time}</span>
           </p>
         </div>
         <Link to={`/oneshoteditor/${oneShotId}`}
