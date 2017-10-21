@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 import moment from 'moment';
 
+import { firebaseApp } from '../../firebase';
 import { checkWhen } from '../helper-functions/checkWhen';
 
 class SpecificShoppingList extends Component{
@@ -18,13 +19,13 @@ class SpecificShoppingList extends Component{
     }
   }
   componentDidMount(){
-
     const shoppingListData = localStorage.getItem(`shoppingList${this.props.shoppingList.shoppingListId}`);
+    console.log(shoppingListData);
     const shoppingList = JSON.parse(shoppingListData);
     const { items, shoppingListId } = this.props.shoppingList;
     const newItems = items.map((item,i) => {
       let done = false;
-      if(!!shoppingList && shoppingList.items[i].item === this.props.shoppingList.items[i]){
+      if(!!shoppingList && shoppingList.items[i] && shoppingList.items[i].item === this.props.shoppingList.items[i]){
         done = !!shoppingList.items[i] ? shoppingList.items[i].done : false;
       }
       return{
@@ -40,6 +41,7 @@ class SpecificShoppingList extends Component{
   componentDidUpdate(){
     const taskData = JSON.stringify(this.state);
     localStorage.setItem(`shoppingList${this.state.shoppingListId}`, taskData);
+    console.log(localStorage.getItem(`shoppingList${this.state.shoppingListId}`))
   }
   changeTaskStatus(index){
     const newItems = this.state.items.map((item, i)=>{
@@ -57,6 +59,7 @@ class SpecificShoppingList extends Component{
     }))
   }
   render(){
+    console.log(this.props.shoppingList.shoppingListId);
     const { shoppingListTitle, shoppingListMoney, deadline } = this.props.shoppingList;
     const when = checkWhen(null, false, moment(deadline));
     return(

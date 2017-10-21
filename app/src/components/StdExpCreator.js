@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startAddStdExp} from '../actions/dataActions';
 import { firebaseApp } from '../../firebase';
-import history from '../../routing/history';
 
 import StdExpForm from './StdExpForm';
 
@@ -13,12 +12,12 @@ class StdExpCreator extends Component {
   }
   componentDidMount(){
     if(!firebaseApp.auth().currentUser){
-      //this.props.history.push('/login');
+      this.props.history.push('/login');
     }
   }
   addOneStdExp(stdExp){
     this.props.startAddStdExp(stdExp);
-    history.push('/app');
+    this.props.history.push('/app');
   }
   render(){
     return(

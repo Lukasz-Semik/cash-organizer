@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { startAddOneShot} from '../actions/dataActions';
 import { firebaseApp } from '../../firebase';
-import history from '../../routing/history';
 
 import OneShotForm from './OneShotForm';
 
@@ -14,12 +13,12 @@ class OneShotCreator extends Component {
   }
   componentDidMount(){
     if(!firebaseApp.auth().currentUser){
-      //this.props.history.push('/login');
+      this.props.history.push('/login');
     }
   }
   addOneShot(oneShot){
     this.props.startAddOneShot(oneShot);
-    history.push('/app');
+    this.props.history.push('/app');
   }
   render(){
     return(

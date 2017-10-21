@@ -1,8 +1,7 @@
-import { TAKE_DB_DATA, LOG_OUT, ADD_ONE_SHOT,
+import { TAKE_DB_DATA, ADD_ONE_SHOT,
   REMOVE_ONE_SHOT, EDIT_ONE_SHOT, ADD_STD_EXP, REMOVE_STD_EXP, EDIT_STD_EXP,
   ADD_SHOPPING_LIST, REMOVE_SHOPPING_LIST, EDIT_SHOPPING_LIST } from './action_names';
 import { database, firebaseApp } from '../../firebase';
-import history from '../../routing/history';
 
 export const takeDbData = (user) => ({
   type: TAKE_DB_DATA,
@@ -209,20 +208,5 @@ export const startRemoveShoppingList = (shoppingListId) => {
     return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists/${shoppingListId}`)
     .remove()
     .then(()=>dispatch(removeOneShot(shoppingListId)))
-  }
-}
-
-// -------- LOG OUT -----------------
-
-export const logOut = () => ({type: LOG_OUT});
-
-export const startLogOut = () => {
-  return dispatch => {
-    return firebaseApp.auth().signOut()
-    .then(()=>{
-      dispatch(logOut());
-      history.push('/');
-    })
-    .catch(error=>console.log(error));
   }
 }

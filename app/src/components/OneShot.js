@@ -5,10 +5,8 @@ import moment from 'moment';
 import { checkWhen } from '../helper-functions/checkWhen';
 
 const OneShot = (props) => {
-  console.log('one shot props', props);
   const marginResetForHiddenList = props.classModifier ? 'list__item--title-no-margins' : '';
   const { oneShotTitle, oneShotMoney, deadline, oneShotId, done } = props.oneShot
-  console.log(deadline);
   const when = checkWhen(null,false, moment(deadline));
   const deadlineClassModifier = done ? 'green' : when.deadlineClassModifier;
   const time = done ? 'Zapłacone' : when.time;

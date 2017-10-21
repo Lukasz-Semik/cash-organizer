@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import numeral from 'numeral';
 import moment from 'moment';
 
+import { firebaseApp } from '../../firebase';
 import { startRemoveStdExp, startEditStdExp } from '../actions/dataActions';
 import { checkWhen } from '../helper-functions/checkWhen';
 
@@ -20,7 +21,11 @@ class StdExpEditor extends Component {
       lastPayment: this.props.stdExp.lastPayment
     }
   }
-
+  componentDidMount(){
+    if(!firebaseApp.auth().currentUser){
+      this.props.history.push('/login');
+    }
+  }
   handleRemoving(){
     this.props.startRemoveStdExp(this.props.stdExp.stdExpId);
     this.props.history.push('/app');
@@ -40,7 +45,6 @@ class StdExpEditor extends Component {
     }));
   }
   render(){
-    console.log('std exp editor state', this.state.lastPayment);
     const { stdExpMoney, term } = this.props.stdExp;
     const when = checkWhen(term,true);
     return(

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 import moment from 'moment';
 
+import { firebaseApp } from '../../firebase';
 import { startRemoveOneShot, startEditOneShot } from '../actions/dataActions';
 import { checkWhen } from '../helper-functions/checkWhen';
 
@@ -21,7 +22,11 @@ class OneShotEditor extends Component {
     this.handleRemoving = this.handleRemoving.bind(this);
     this.changeStatus = this.changeStatus.bind(this);
   }
-
+  componentDidMount(){
+    if(!firebaseApp.auth().currentUser){
+      this.props.history.push('/login');
+    }
+  }
   handleRemoving(){
     this.props.startRemoveOneShot(this.props.oneShot.oneShotId);
     this.props.history.push('/app');

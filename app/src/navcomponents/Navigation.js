@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { NavLink} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
-import { firebaseApp } from '../../firebase';
 import history from '../../routing/history';
 
-import { startLogOut } from '../actions/dataActions';
+import { startLogOut } from '../actions/userActions';
 
 import SummaryDisplay from './SummaryDisplay';
 
@@ -17,6 +16,7 @@ class Navigation extends Component{
           <nav className="header__navigation">
             <h1 className="header__title">Cześć <span className="header__username"><em>{this.props.user.username}</em></span> </h1>
             <button className="button button--clear button--pull-right" onClick={()=>this.props.startLogOut()}>Wyloguj</button>
+            <Link to="/removeuser" className="button button--clear button--pull-right button--remove-user">Usuń konto</Link>
             <SummaryDisplay user={this.props.user} />
           </nav>
         </header>
@@ -26,8 +26,8 @@ class Navigation extends Component{
         <header className="header">
           <nav className="header__navigation">
             <h1 className="header__title">Organizer Kasy</h1>
-            <NavLink className="button button--pull-right" to="/login">Zaloguj</NavLink>
-            <NavLink className="button button--pull-right" to="/signup">Dołącz</NavLink>
+            <Link className="button button--pull-right" to="/login">Zaloguj</Link>
+            <Link className="button button--pull-right" to="/signup">Dołącz</Link>
           </nav>
         </header>
       );

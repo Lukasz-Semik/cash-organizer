@@ -22,8 +22,17 @@
     color: #444;
     cursor: pointer;
   }
+  &--remove-user{
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 400;
+    font-style: italic;
+  }
   &--login{
     background-color: $btn-green;
+    &--removal{
+      background-color: red;
+    }
     margin: 0 auto;
     display: block;
     width: 200px;

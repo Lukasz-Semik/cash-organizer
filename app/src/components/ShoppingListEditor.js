@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import numeral from 'numeral';
 import moment from 'moment';
 
+import { firebaseApp } from '../../firebase';
 import { startRemoveShoppingList, startEditShoppingList } from '../actions/dataActions';
 import { checkWhen } from '../helper-functions/checkWhen';
 
@@ -20,7 +21,11 @@ class ShoppingListEditor extends Component {
       done: this.props.shoppingList.done
     }
   }
-
+  componentDidMount(){
+    if(!firebaseApp.auth().currentUser){
+      this.props.history.push('/login');
+    }
+  }
   handleRemoving(){
     localStorage.removeItem(`shoppingList${this.props.shoppingList.shoppingListId}`);
     this.props.startRemoveShoppingList(this.props.shoppingList.shoppingListId);

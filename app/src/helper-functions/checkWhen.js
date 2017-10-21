@@ -28,7 +28,6 @@ export const checkWhen = (term, isStdExp, deadline) => {
     };
   }else{// --- version for non standard expenses
     //check if user missed deadline.
-    console.log('deadline from when', deadline)
     const when = moment(deadline).locale('pl').fromNow();
     const isAfter = moment().isAfter(moment(deadline));
     //if yes, always red.

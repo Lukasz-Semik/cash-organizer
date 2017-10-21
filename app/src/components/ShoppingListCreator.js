@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { startAddShoppingList } from '../actions/dataActions';
 import { firebaseApp } from '../../firebase';
-import history from '../../routing/history';
 
 import ShoppingListForm from './ShoppingListForm';
 
@@ -13,12 +12,12 @@ class ShoppingListCreator extends Component {
   }
   componentDidMount(){
     if(!firebaseApp.auth().currentUser){
-      //this.props.history.push('/login');
+      this.props.history.push('/login');
     }
   }
   addShoppingList(shoppingList){
     this.props.startAddShoppingList(shoppingList);
-    history.push('/app');
+    this.props.history.push('/app');
   }
   render(){
     return(

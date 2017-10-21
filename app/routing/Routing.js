@@ -14,6 +14,7 @@ import StdExpEditor from '../src/components/StdExpEditor';
 import ShoppingListCreator from '../src/components/ShoppingListCreator';
 import ShoppingListEditor from '../src/components/ShoppingListEditor';
 import SpecificShoppingList from '../src/components/SpecificShoppingList';
+import RemoveUserPage from '../src/components/RemoveUserPage';
 
 
 const Routing = () => (
@@ -32,6 +33,7 @@ const Routing = () => (
         <Route path='/shoppinglistcreator' component={ShoppingListCreator} />
         <Route path='/shoppinglisteditor/:id' component={ShoppingListEditor} />
         <Route path='/specificshoppinglist/:id' component={SpecificShoppingList} />
+        <Route path='/removeuser' component={RemoveUserPage} />
       </Switch>
     </div>
   </Router>
