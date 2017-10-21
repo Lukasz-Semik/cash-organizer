@@ -18,7 +18,7 @@ class StdExpList extends Component{
   }
   generateStdExpensesList(){
     if(!this.props.stdExpenses){
-      return(<div className="list__empty-msg"><i>Add item to start</i></div>)
+      return(<div className="list__empty-msg"><i>Lista wydatków stałych jest pusta</i></div>)
     }else{
       let classModifier = '';
       if(!this.state.listIsVisible){
@@ -47,7 +47,7 @@ class StdExpList extends Component{
           onClick={this.showHide}>
           <b>&darr;</b>
         </span>
-        <h4 className="list__title">Standard Expenses</h4>
+        <h4 className="list__title">Wydatki Stałe</h4>
         <div className="list__separator"></div>
         {this.generateStdExpensesList()}
       </div>

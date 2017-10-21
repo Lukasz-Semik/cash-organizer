@@ -59,7 +59,7 @@ class ShoppingListForm extends Component{
       return(
         <div className="wrapper-for-shopping-list">
           <div className="list__empty-msg">
-            <i>list is empty</i>
+            <i>Lista jest pusta</i>
           </div>
         </div>
       );
@@ -69,7 +69,8 @@ class ShoppingListForm extends Component{
           {this.state.items.map((item,i)=>{
             return(
               <div className="wrapper-helper" key={i}>
-                <span className="list__add-item list__add-item--red list__add-item--pull-little-up" onClick={this.remove.bind(this, i)}>
+                <span className="list__add-item list__add-item--red list__add-item--pull-little-up"
+                  onClick={this.remove.bind(this, i)}>
                   <b>-</b>
                 </span>
                 <p className="list__shopping-items">{item}</p>
@@ -84,16 +85,16 @@ class ShoppingListForm extends Component{
   handleOnSubmit(event){
     event.preventDefault();
     const { shoppingListTitle, shoppingListMoney, deadline, items } = this.state;
-    if(shoppingListTitle === ''){
-      this.setState(()=>({error: 'The title must be at least 3 characters long'}))
+    if(shoppingListTitle.length < 3){
+      this.setState(()=>({error: 'Tytul musi mieć conajmniej 3 znaki'}))
     }else if(shoppingListMoney === ''){
-      this.setState(()=>({error: 'Money input is empty...'}))
+      this.setState(()=>({error: 'Pole koszt jest puste...'}))
     }else if(items.length<1){
-      this.setState(()=>({error: 'Shpping list is empty...'}))
+      this.setState(()=>({error: 'Lista zakupów jest pusta...'}))
     }else{
       const done = this.props.duringEdition ? this.props.done : this.state.done
       this.props.addShoppingList({
-        deadline: this.state.deadline.format('LL'),
+        deadline: this.state.deadline.locale('en').format('LL'),
         shoppingListTitle,
         shoppingListMoney,
         items,
@@ -105,33 +106,35 @@ class ShoppingListForm extends Component{
     return(
       <div>
         <div className="wrapper-helper wrapper-helper--move-up wrapper-helper--padd-bot">
-          <h4 className="form__title">{this.props.oneShot ? 'Edit' : 'Create'} Shopping List</h4>
+          <h4 className="form__title">{this.props.shoppingList ? 'Edytuj' : 'Stwórz'} Listę zakupów</h4>
           <form onSubmit={this.handleOnSubmit} className="form">
             <div className="wrapper-helper">
               <input type="text" name="shoppingListTitle" value={this.state.shoppingListTitle}
-                onChange={this.onChangeTitle} placeholder="shoppingList" className="form__input"/>
-              <span className="form-msg form-msg--hints">{this.props.shoppingList ? 'Title' : ''}</span>
+                onChange={this.onChangeTitle} placeholder="Tytul" className="form__input"/>
+              <span className="form-msg form-msg--hints">{this.props.shoppingList ? 'Tytul' : ''}</span>
             </div>
             <div className="wrapper-helper">
               <input type="text" name="shoppingListMoney" value={this.state.shoppingListMoney}
-                onChange={this.onChangeMoney} placeholder="Cash" className="form__input"/>
-              <span className="form-msg form-msg--hints">{this.props.shoppingList ? 'Cash' : ''}</span>
+                onChange={this.onChangeMoney} placeholder="Koszt" className="form__input"/>
+              <span className="form-msg form-msg--hints">{this.props.shoppingList ? 'Koszt' : ''}</span>
             </div>
             <div className="form__date-picker">
               <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}
-                dateFormat="LL" className="form__input form__input--bot-margin"/>
+                dateFormat="LL" locale='pl' className="form__input form__input--bot-margin"/>
             </div>
-            <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.shoppingList ? 'Edit' : 'Add'}</button>
+            <button className="btn btn--green-const btn--left-bot btn--lg">
+              {this.props.shoppingList ? 'Zapisz' : 'Dodaj'}
+            </button>
           </form>
-          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Back</Link>
+          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Wróć</Link>
         </div>
         <div className="wrapper-for-shopping-list wrapper-helper">
-          <input type="text" placeholder="Item to buy title" name="newItemTitle"
+          <input type="text" placeholder="Rzecz do kupienia" name="newItemTitle"
             className="form__input form__input--shopping-list-size form__input--bot-margin"
             value={this.state.newItemTitle} onChange={this.handleItemTitleChange} />
           <button onClick={this.addNewItem}
             className="btn btn--green-const btn--md btn--center">
-            <i>Add Item</i>
+            <i>Dodaj rzecz</i>
           </button>
           <p className="form-msg form-msg--pull-up">{!!this.state.error ? this.state.error : ''}</p>
         </div>

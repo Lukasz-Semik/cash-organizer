@@ -50,21 +50,21 @@ class ShoppingListEditor extends Component {
               <em>{this.props.shoppingList.shoppingListTitle}</em>
             </h4>
             <div className="list__item--descr">
-              <p className="list__item--black">Cash:
+              <p className="list__item--black">Koszt:
                 <span className="list__item--cash">
                   &nbsp;{numeral(shoppingListMoney).format('0,00.00')}
                 </span>
                 <span className="unit-list"> pln</span>
               </p>
               <p className="list__item--black">
-                {deadline}
+                {moment(deadline).locale('pl').format('LL')}
                 <br/>
                 <span className={`list__item--${deadlineClassModifier}`}>{time}</span>
               </p>
             </div>
             <button className="btn btn--red-const btn--top-right-detail-v"
               onClick={this.handleRemoving}>
-              Delete
+              Usuń
             </button>
             <button onClick={this.changeStatus}
               className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std`}>

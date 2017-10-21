@@ -15,8 +15,8 @@ class Navigation extends Component{
       return(
         <header className="header">
           <nav className="header__navigation">
-            <h1 className="header__title">Hello <span className="header__username"><em>{this.props.user.username}</em></span> </h1>
-            <button className="button button--clear button--pull-right" onClick={()=>this.props.startLogOut()}>LogOut</button>
+            <h1 className="header__title">Cześć <span className="header__username"><em>{this.props.user.username}</em></span> </h1>
+            <button className="button button--clear button--pull-right" onClick={()=>this.props.startLogOut()}>Wyloguj</button>
             <SummaryDisplay user={this.props.user} />
           </nav>
         </header>
@@ -25,9 +25,9 @@ class Navigation extends Component{
       return(
         <header className="header">
           <nav className="header__navigation">
-            <h1 className="header__title">Cash Organizer</h1>
-            <NavLink className="button button--pull-right" to="/login">Log In</NavLink>
-            <NavLink className="button button--pull-right" to="/signup">Sign Up</NavLink>
+            <h1 className="header__title">Organizer Kasy</h1>
+            <NavLink className="button button--pull-right" to="/login">Zaloguj</NavLink>
+            <NavLink className="button button--pull-right" to="/signup">Dołącz</NavLink>
           </nav>
         </header>
       );

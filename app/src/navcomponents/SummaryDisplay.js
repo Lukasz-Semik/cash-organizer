@@ -28,10 +28,10 @@ const SummaryDisplay = (props) => {
   const total = oneShotsTotalMoney + stdExpensesTotalMoney + shoppingListTotalMoney;
   return(
   <div className="summaryDisplay">
-    <p><em> Total: {numeral(total).format('0,0.00')} <span className="unit">pln</span></em></p>
-    <p><em>One Shots: {numeral(oneShotsTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
-    <p><em>Std Expenses: {numeral(stdExpensesTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
-    <p><em>Shopping Lists: {numeral(shoppingListTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
+    <p><em>Wydatki: {numeral(total).format('0,0.00')} <span className="unit">pln</span></em></p>
+    <p><em>Jednorazowe: {numeral(oneShotsTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
+    <p><em>Stałe: {numeral(stdExpensesTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
+    <p><em>Listy zakupów: {numeral(shoppingListTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
   </div>)
 }
 

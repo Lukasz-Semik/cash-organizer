@@ -14,7 +14,7 @@ const StdExp = (props) => {
           <em>{stdExpTitle}</em>
         </h4>
         <div className="list__item--descr">
-          <p className="list__item--black">Cash:
+          <p className="list__item--black">Koszt:
             <span className="list__item--cash">
               &nbsp;{numeral(stdExpMoney).format('0,00.00')}</span>
             <span className="unit-list"> pln</span>
@@ -25,7 +25,7 @@ const StdExp = (props) => {
         </div>
         <Link to={`/stdexpeditor/${stdExpId}`}
           className="btn btn--top-right btn--orange">
-          <i>Edit</i>
+          <i>Edytuj</i>
         </Link>
         <p className="list__last-payment">Ostatnia wpłata: {lastPayment}</p>
       </div>

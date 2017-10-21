@@ -66,14 +66,14 @@ class SpecificShoppingList extends Component{
             <em>{shoppingListTitle}</em>
           </h4>
           <div className="list__item--descr">
-            <p className="list__item--black">Cash:
+            <p className="list__item--black">Koszt:
               <span className="list__item--cash">
                 &nbsp;{numeral(shoppingListMoney).format('0,00.00')}
               </span>
               <span className="unit-list"> pln</span>
             </p>
             <p className="list__item--black">
-              {deadline}
+              {moment(deadline).locale('pl').format('LL')}
               <br/>
               <span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
             </p>
@@ -90,7 +90,7 @@ class SpecificShoppingList extends Component{
             <div className="list__separator list__separator--orange"></div>
           </div>
         ))}
-        <Link to="/app" className="btn btn--orange-const btn--top-right btn--pull-down">Back</Link>
+        <Link to="/app" className="btn btn--orange-const btn--top-right btn--pull-down">Wróć</Link>
       </div>
     );
   }

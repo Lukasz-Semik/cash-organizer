@@ -167,7 +167,8 @@ export const startAddShoppingList = shoppingList => {
     shoppingListTitle: shoppingList.shoppingListTitle,
     shoppingListMoney: shoppingList.shoppingListMoney,
     items: shoppingList.items.join('***'),
-    deadline: shoppingList.deadline
+    deadline: shoppingList.deadline,
+    done: shoppingList.done
   }
   return dispatch => {
     return database.ref(`user/${firebaseApp.auth().currentUser.uid}/shoppingLists`)

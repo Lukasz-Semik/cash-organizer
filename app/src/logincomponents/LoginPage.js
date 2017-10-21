@@ -20,7 +20,14 @@ class LoginPage extends Component{
     firebaseApp.auth().signInWithEmailAndPassword(email, password)
     .then(()=>{history.push('/app')})
     .catch(error=>{
-      this.setState(()=>({error: error.message}));
+      let errorMsg;
+      if(error.message === 'The email address is badly formatted.'){
+        errorMsg = 'Nieprawidłowy adres e-mail.'
+      }
+      if(error.message === 'The password is invalid or the user does not have a password.'){
+        errorMsg = 'Nieprawdiłowe hasło.'
+      }
+      this.setState(()=>({error: errorMsg}));
     });
   }
   onChangeEmail(event){
@@ -34,13 +41,13 @@ class LoginPage extends Component{
   render(){
     return(
       <div className="wrapper-form wrapper-helper">
-        <h2 className="form__title">Let's Log In</h2>
+        <h2 className="form__title">Zaloguj się</h2>
         <form onSubmit={this.handleSubmit} className="form">
-          <input type="text" name="email" placeholder="email" className="form__input"
+          <input type="text" name="email" placeholder="Twój e-mail" className="form__input"
             onChange={this.onChangeEmail} value={this.state.email} />
-          <input type="password" name="password" placeholder="password" className="form__input"
+          <input type="password" name="password" placeholder="Hasło" className="form__input"
             onChange={this.onChangePass} />
-          <button className="button button--login">Log In</button>
+          <button className="button button--login">Zaloguj</button>
         </form>
         <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
       </div>

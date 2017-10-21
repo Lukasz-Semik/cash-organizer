@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import numeral from 'numeral';
+import moment from 'moment';
 
 import { startRemoveOneShot, startEditOneShot } from '../actions/dataActions';
 import { checkWhen } from '../helper-functions/checkWhen';
@@ -47,7 +48,7 @@ class OneShotEditor extends Component {
           <div className="list__item">
             <h4 className="list__item--title list__item--title-details"><em>{this.props.oneShot.oneShotTitle}</em></h4>
             <div className="list__item--descr">
-              <p className="list__item--black">Cash:
+              <p className="list__item--black">Koszt:
                 <span className="list__item--cash">
                   &nbsp;{numeral(oneShotMoney).format('0,00.00')}
                 </span>
@@ -55,13 +56,13 @@ class OneShotEditor extends Component {
               </p>
 
               <p className="list__item--black">
-                {deadline}
+                {moment(deadline).locale('pl').format('LL')}
                 <br/>
                 <span className={`list__item--${deadlineClassModifier} smooth-transition-std`}>{time}</span>
               </p>
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">
-              Delete
+              Usuń
             </button>
             <button onClick={this.changeStatus}
               className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std`}>

@@ -24,7 +24,7 @@ const ShoppingList = (props) => {
           <em>{shoppingListTitle}</em>
         </h4>
         <div className="list__item--descr">
-          <p className="list__item--black">Cash:
+          <p className="list__item--black">Koszt:
             <span className="list__item--cash">
               &nbsp;{numeral(shoppingListMoney).format('0,00.00')}
             </span>
@@ -32,17 +32,17 @@ const ShoppingList = (props) => {
           </p>
 
           <p className="list__item--black">
-            {deadline}
+            {moment(deadline).locale('pl').format('LL')}
             <br/>
             <span className={`list__item--${deadlineClassModifier}`}>{time}</span>
           </p>
         </div>
         <Link to={`/shoppinglisteditor/${shoppingListId}`}
           className="btn btn--top-right btn--orange">
-          <i>Edit</i>
+          <i>Edytuj</i>
         </Link>
         <Link to={`/specificshoppinglist/${shoppingListId}`}
-          className="btn btn--green btn--top-left"><i>View</i></Link>
+          className="btn btn--green btn--top-left"><i>W sklepie</i></Link>
       </div>
       <div className="list__separator"></div>
     </div>

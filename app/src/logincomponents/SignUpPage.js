@@ -19,7 +19,7 @@ class SignUpPage extends Component{
   handleSubmit(event){
     event.preventDefault();
     if(this.state.username.length < 2){
-      this.setState(()=>({error: 'The username must be at least 3 characters long'}));
+      this.setState(()=>({error: 'Nazwa użytkownika musi mieć conajmniej 3 znaki'}));
     }else{
       const { email, password, username } = this.state;
       const history = this.props.history;
@@ -33,7 +33,14 @@ class SignUpPage extends Component{
         history.push('/app')
       })
       .catch(error=>{
-        this.setState(()=>({error: error.message}));
+        let errorMsg;
+        if(error.message === 'The email address is badly formatted.'){
+          errorMsg = 'Nieprawidłowy adres e-mail.'
+        }
+        if(error.message === 'The password must be 6 characters long or more.'){
+          errorMsg = 'Hasło musi mieć conajmniej 6 znaków'
+        }
+        this.setState(()=>({error: errorMsg}));
       })
     }
   }

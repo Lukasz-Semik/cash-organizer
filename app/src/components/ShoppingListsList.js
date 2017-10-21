@@ -17,8 +17,8 @@ class ShoppingListsList extends Component {
     }))
   }
   generateShoppingListsList(){
-    if(!this.props.shoppingLists || this.props.shoppingLists === 'empty'){
-      return(<div className="list__empty-msg"><i>Add item to start</i></div>)
+    if(!this.props.shoppingLists){
+      return(<div className="list__empty-msg"><i>Brak list zakupów</i></div>)
     }else{
       let classModifier = '';
       if(!this.state.listIsVisible){
@@ -50,7 +50,7 @@ class ShoppingListsList extends Component {
           onClick={this.showHide}>
           <b>&darr;</b>
         </span>
-        <h4 className="list__title">Shopping Lists</h4>
+        <h4 className="list__title">Listy Zakupów</h4>
         <div className="list__separator"></div>
         {this.generateShoppingListsList()}
       </div>

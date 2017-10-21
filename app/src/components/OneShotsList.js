@@ -19,7 +19,7 @@ class OneShotsList extends Component {
   }
   generateOneShotList(){
     if(!this.props.oneShots){
-      return(<div className="list__empty-msg"><i>Add item to start</i></div>)
+      return(<div className="list__empty-msg"><i>Lista jednorazowych wydatków jest pusta</i></div>)
     }else{
       let classModifier = '';
       if(!this.state.listIsVisible){
@@ -48,7 +48,7 @@ class OneShotsList extends Component {
           onClick={this.showHide}>
           <b>&darr;</b>
         </span>
-        <h4 className="list__title">One Shots</h4>
+        <h4 className="list__title">Wydatki Jednorazowe</h4>
         <div className="list__separator"></div>
         {this.generateOneShotList()}
       </div>

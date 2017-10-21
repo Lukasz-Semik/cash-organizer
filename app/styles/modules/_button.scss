@@ -6,6 +6,12 @@
   color: black;
   font-weight: 900;
   border: none;
+  &:active{
+    outline: none;
+  }
+  &:focus{
+    outline: none;
+  }
   &--pull-right{
     float: right;
   }

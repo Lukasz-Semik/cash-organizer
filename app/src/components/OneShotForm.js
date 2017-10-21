@@ -35,16 +35,16 @@ class OneShotForm extends Component{
     event.preventDefault();
     const { oneShotTitle, oneShotMoney, deadline } = this.state;
     if(oneShotMoney === ''){
-      this.setState(()=>({error: 'Money input is empty...'}))
-    }else if(oneShotTitle === ''){
-      this.setState(()=>({error: 'The title must be at least 3 characters long'}))
+      this.setState(()=>({error: 'Pole koszt jest puste...'}))
+    }else if(oneShotTitle.length < 3){
+      this.setState(()=>({error: 'Tytul musi mieć conajmniej 3 znaki'}))
     }else{
       //if one shot is during edition, take data from props.
       const done = this.props.duringEdition ? this.props.done : this.state.done
       this.props.addOneShot({
         oneShotTitle,
         oneShotMoney,
-        deadline: this.state.deadline.format('LL'),
+        deadline: this.state.deadline.locale('en').format('LL'),
         done
       });
     }
@@ -52,25 +52,25 @@ class OneShotForm extends Component{
   render(){
     return(
         <div className="wrapper-helper">
-          <h4 className="form__title">{this.props.oneShot ? 'Edit' : 'Create'} One Shot</h4>
+          <h4 className="form__title">{this.props.oneShot ? 'Edytuj' : 'Stwórz'} Jednorazowy Wydatek</h4>
           <form onSubmit={this.handleOnSubmit} className="form">
             <div className="wrapper-helper">
               <input type="text" name="oneShotTitle" value={this.state.oneShotTitle}
-                onChange={this.onChangeTitle} placeholder="One Shot" className="form__input"/>
-              <span className="form-msg form-msg--hints">{this.props.oneShot ? 'Title' : ''}</span>
+                onChange={this.onChangeTitle} placeholder="Tytuł" className="form__input"/>
+              <span className="form-msg form-msg--hints">{this.props.oneShot ? 'Tytuł' : ''}</span>
             </div>
             <div className="wrapper-helper">
               <input type="text" name="oneShotMoney" value={this.state.oneShotMoney}
-                onChange={this.onChangeMoney} placeholder="Cash" className="form__input"/>
-              <span className="form-msg form-msg--hints">{this.props.oneShot ? 'Money' : ''}</span>
+                onChange={this.onChangeMoney} placeholder="Koszt" className="form__input"/>
+              <span className="form-msg form-msg--hints">{this.props.oneShot ? 'Koszt' : ''}</span>
             </div>
             <div className="form__date-picker">
               <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}
-              dateFormat="LL" className="form__input" />
+              dateFormat="LL" locale='pl' className="form__input" />
             </div>
-            <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Edit' : 'Add'}</button>
+            <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Zapisz' : 'Dodaj'}</button>
           </form>
-          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Back</Link>
+          <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Wróć</Link>
           <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
         </div>
 
