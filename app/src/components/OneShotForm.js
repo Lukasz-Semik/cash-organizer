@@ -66,7 +66,7 @@ class OneShotForm extends Component{
             </div>
             <div className="form__date-picker">
               <DatePicker selected={this.state.deadline} onChange={this.handleDateChange}
-              dateFormat="LL" locale='pl' className="form__input" />
+              dateFormat="LL" locale='pl' className="form__input form__input--bot-margin" />
             </div>
             <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Zapisz' : 'Dodaj'}</button>
           </form>

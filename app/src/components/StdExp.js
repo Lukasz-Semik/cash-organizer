@@ -20,7 +20,8 @@ const StdExp = (props) => {
             <span className="unit-list"> pln</span>
           </p>
           <p className="list__item--black">
-            {term}. każdego miesiąca <br/><span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
+            {term}. każdego miesiąca
+            <br/><span className={`list__item--${when.deadlineClassModifier}`}>{when.time}</span>
           </p>
         </div>
         <Link to={`/stdexpeditor/${stdExpId}`}

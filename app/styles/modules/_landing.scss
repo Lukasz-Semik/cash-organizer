@@ -1,0 +1,158 @@
+.landing-container{
+  width: 600px;
+  height: 400px;
+  background-color: white;
+  @include box-shadow;
+  position: relative;
+  margin: 150px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: container-animation 12s linear;
+}
+//100 -- 12
+//85.3 -- x
+@keyframes container-animation {
+  0%{
+    opacity: 0;
+    width: 300px;
+    height: 200px;
+  }
+  3%{
+    opacity: 1;
+    width: 600px;
+    height: 400px;
+  }
+  6.6%{
+    transform: rotateZ(0deg);
+  }
+  7%{
+    transform: rotateZ(1deg);
+  }
+  7.6%{
+    transform: rotateZ(-1deg);
+  }
+  8.6%{
+    transform: rotateZ(0deg);
+  }
+  31.6%{
+    transform: rotateZ(0deg);
+  }
+  32%{
+    transform: rotateZ(1deg);
+  }
+  32.6%{
+    transform: rotateZ(-1deg);
+  }
+  33.6%{
+    transform: rotateZ(0deg);
+  }
+  56.6%{
+    transform: rotateZ(0deg); // 1
+  }
+  57%{
+    transform: rotateZ(1deg); // 2
+  }
+  57.6%{
+    transform: rotateZ(-1deg); // 3
+  }
+  58.6%{
+    transform: rotateZ(0deg); // 4
+  }
+  85.3%{
+    transform: rotateZ(0deg);
+  }
+  85.7%{
+    transform: rotateZ(1deg);
+  }
+  86.3%{
+    transform: rotateZ(-1deg);
+  }
+  87.3%{
+    transform: rotateZ(0deg);
+  }
+  100%{
+    opacity: 1;
+    width: 600px;
+    height: 400px;
+  }
+}
+
+.landing-title{
+  font-size: 40px;
+  &--orange{
+    color: darkorange;
+  }
+  &--red{
+    color: darkred;
+  }
+  &--green{
+    color: green;
+  }
+  &--margin-modifier{
+    margin-top: 0px;
+    margin-bottom: 50px;
+  }
+}
+
+.landing-text{
+  color: #aaa;
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  animation: landing-text-animation 12s linear;
+}
+@keyframes landing-text-animation {
+   0%{
+     opacity: 0;
+   }
+   83%{
+     opacity: 0;
+     transform: scale(1.6);
+   }
+   85.3%{
+     opacity: 1;
+     transform: scale(1);
+   }
+}
+.animation{
+  opacity: 0;
+  position: absolute;
+  top: 120%;
+  &--1{
+    animation: title-animation 3s linear;
+    animation-delay: 0.5s;
+  }
+  &--2{
+    animation: title-animation 3s linear;
+    animation-delay: 3.5s;
+  }
+  &--3{
+    animation: title-animation 3s linear;
+    animation-delay: 6.5s;
+  }
+}
+//tytul jest widoczny po 10% z 3s + 0.5. 0.3+6.5 = 6.8s.
+@keyframes title-animation {
+  0%{
+    top: 35%;
+    opacity: 0;
+    transform: scale(1.6);
+  }
+  10%{
+    opacity: 1;
+    transform: scale(1);
+    top: 35%;
+  }
+  80%{
+    top: 35%;
+    opacity: 1;
+  }
+  100%{
+    opacity: 0;
+    transform: scale(1);
+  }
+}
+
+//animacja konczy sie po 9.5sekundy. chce, zeby przez 10s byl niewidzialny. powiedzmy 2s wejscia.
+//czyli musze wiedziec ile % z 12 to 10s. 83%:
