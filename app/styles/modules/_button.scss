@@ -39,6 +39,8 @@
   &--login{
     background-color: $btn-green;
     color: black;
+    position: relative;
+    z-index: 10;
     &--removal{
       background-color: red;
     }
