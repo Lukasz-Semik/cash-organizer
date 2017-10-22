@@ -1,10 +1,15 @@
 .landing-container{
-  width: 600px;
-  height: 400px;
+  width: 95%;
+  margin: 80px auto;
+  @include atSmall{
+    width: 600px;
+    height: 400px;
+    margin: 150px auto;
+  }
   background-color: white;
   @include box-shadow;
   position: relative;
-  margin: 150px auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,13 +20,17 @@
 @keyframes container-animation {
   0%{
     opacity: 0;
-    width: 300px;
-    height: 200px;
+    @include atSmall{
+      width: 300px;
+      height: 200px;
+    }
   }
   3%{
     opacity: 1;
-    width: 600px;
-    height: 400px;
+    @include atSmall{
+      width: 600px;
+      height: 400px;
+    }
   }
   6.6%{
     transform: rotateZ(0deg);
@@ -73,13 +82,18 @@
   }
   100%{
     opacity: 1;
-    width: 600px;
-    height: 400px;
+    @include atSmall{
+      width: 600px;
+      height: 400px;
+    }
   }
 }
 
 .landing-title{
-  font-size: 40px;
+  font-size: 23px;
+  @include atSmall{
+    font-size: 40px;
+  }
   &--orange{
     color: darkorange;
   }
@@ -90,14 +104,21 @@
     color: green;
   }
   &--margin-modifier{
-    margin-top: 0px;
-    margin-bottom: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    @include atSmall{
+      margin-top: 0px;
+      margin-bottom: 50px;
+    }
   }
 }
 
 .landing-text{
   color: #aaa;
-  font-size: 20px;
+  font-size: 12px;
+  @include atSmall{
+    font-size: 20px;
+  }
   font-weight: 900;
   text-align: center;
   animation: landing-text-animation 12s linear;
@@ -108,7 +129,10 @@
    }
    83%{
      opacity: 0;
-     transform: scale(1.6);
+     transform: scale(1.2);
+     @include atSmall{
+        transform: scale(1.6);
+     }
    }
    85.3%{
      opacity: 1;
@@ -118,7 +142,11 @@
 .animation{
   opacity: 0;
   position: absolute;
-  top: 120%;
+  top: 70%;
+  @include atSmall{
+    top: 100%;
+  }
+
   &--1{
     animation: title-animation 3s linear;
     animation-delay: 0.5s;
@@ -132,12 +160,15 @@
     animation-delay: 6.5s;
   }
 }
-//tytul jest widoczny po 10% z 3s + 0.5. 0.3+6.5 = 6.8s.
+
 @keyframes title-animation {
   0%{
     top: 35%;
     opacity: 0;
-    transform: scale(1.6);
+    transform: scale(1.2);
+    @include atSmall{
+      transform: scale(1.6);
+    }
   }
   10%{
     opacity: 1;
@@ -153,6 +184,3 @@
     transform: scale(1);
   }
 }
-
-//animacja konczy sie po 9.5sekundy. chce, zeby przez 10s byl niewidzialny. powiedzmy 2s wejscia.
-//czyli musze wiedziec ile % z 12 to 10s. 83%:

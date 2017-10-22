@@ -59,16 +59,16 @@ class SignUpPage extends Component{
   render(){
     return(
       <div className="wrapper-form wrapper-helper">
-        <h2 className="form__title">Let's Sign Up</h2>
+        <h2 className="form__title">Zarejestruj się</h2>
         <form onSubmit={this.handleSubmit} className="form">
-          <input type="text" name="username" placeholder="username" className="form__input"
+          <input type="text" name="username" placeholder="Nazwa Użytkownika" className="form__input"
             onChange={this.onChangeUsername} value={this.state.username}/>
-          <input type="text" name="email" placeholder="email" className="form__input"
+          <input type="text" name="email" placeholder="Twój e-mail" className="form__input"
             onChange={this.onChangeEmail} value={this.state.email}/>
           <input type="password" name="password" className="form__input"
-            placeholder="password" onChange={this.onChangePass}
+            placeholder="Hasło" onChange={this.onChangePass}
             />
-          <button className="button button--login">Submit</button>
+          <button className="button button--login">Start</button>
         </form>
         <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
       </div>

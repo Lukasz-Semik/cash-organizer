@@ -71,7 +71,7 @@ class OneShotForm extends Component{
             <button className="btn btn--green-const btn--left-bot btn--lg">{this.props.oneShot ? 'Zapisz' : 'Dodaj'}</button>
           </form>
           <Link to="/app" className="btn btn--orange-const btn--right-bot btn--lg">Wróć</Link>
-          <p className="form-msg">{!!this.state.error ? this.state.error : ''}</p>
+          <p className="form-msg form-msg--pull-down">{!!this.state.error ? this.state.error : ''}</p>
         </div>
 
     );

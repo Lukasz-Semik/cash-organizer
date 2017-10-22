@@ -73,7 +73,7 @@ class StdExpForm extends Component{
           <button className="btn btn--green-const btn--left-bot-v2 btn--lg">{this.props.stdExp ? 'Zapisz' : 'Dodaj'}</button>
         </form>
         <Link to="/app" className="btn btn--orange-const btn--right-bot-v2 btn--lg">Wróć</Link>
-        <p className="form-msg form-msg--pull-down">{!!this.state.error ? this.state.error : ''}</p>
+        <p className="form-msg form-msg--pull-down-more">{!!this.state.error ? this.state.error : ''}</p>
       </div>
     );
   }

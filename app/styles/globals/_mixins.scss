@@ -11,3 +11,61 @@
   -moz-box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
   box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.75);
 }
+
+@mixin atSmall{
+  @media (min-width: 1200px){
+    @content;
+  }
+}
+@mixin mediumWidthModif{
+  @media (min-width: 800px){
+    @content;
+  }
+}
+
+// @define-mixin atXSmall{
+//   @media (min-width: 475px) {
+//     @mixin-content;
+//   }
+// }
+//
+// @define-mixin atSmall {
+//   @media (min-width: 570px) {
+//     @mixin-content;
+//   }
+// }
+//
+// @define-mixin atMSmall {
+//   @media (min-width: 650px) {
+//     @mixin-content;
+//   }
+// }
+//
+// @define-mixin atMedium {
+//   @media(min-width: 800px){
+//     @mixin-content;
+//   }
+// }
+//
+// @define-mixin atLarge {
+//   @media(min-width: 1010px){
+//     @mixin-content;
+//   }
+// }
+// @define-mixin atMLarge{
+//   @media(min-width: 1200px){
+//     @mixin-content;
+//   }
+// }
+// @define-mixin atXLarge {
+//   @media(min-width: 1400px){
+//     @mixin-content;
+//   }
+// }
+// @define-mixin clearfix{
+//   &::after{
+//     content: "";
+//     clear: both;
+//     display: table;
+//   }
+// }

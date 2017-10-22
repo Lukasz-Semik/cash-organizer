@@ -1,19 +1,27 @@
 .wrapper-form{
   background-color: white;
-  width: 700px;
-  &--item-size{
-    width: 600px;
+  width: 95%;
+  margin-top: 30px;
+  @include atSmall{
+    width: 700px;
+    margin-top: 60px;
   }
-  &--center{
-
+  &--item-size{
+    width: 100%;
+    @include mediumWidthModif{
+      width: 600px;
+    }
   }
   margin: 0 auto;
-  margin-top: 60px;
   @include box-shadow;
   padding: 30px 0 50px 0;
   &--item-size{
-    margin-top: 0;
-    transform: scale(0.8);
+    transform: scale(0.9);
+    margin-top: 20px;
+    @include atSmall{
+      margin: 0 auto;
+      transform: scale(0.8);
+    }
   }
   &--move-up{
     margin-top: -30px;

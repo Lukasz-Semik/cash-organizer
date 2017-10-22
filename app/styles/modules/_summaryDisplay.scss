@@ -1,12 +1,30 @@
 .summaryDisplay{
-  width: 80%;
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  background-color: white;
+  @include atSmall{
+    position: static;
+    width: 60%;
+  }
+  @include box-shadow;
+  @include atSmall{
+    box-shadow: none;
+  }
   margin: 0 auto;
   text-align: center;
   p{
    display: inline-block;
-   margin: 0 5px;
-   line-height: 60px;
-   font-size: 12px;
+   margin: 0;
+   width: 50%;
+   line-height: 15px;
+   font-size: 10px;
+   @include atSmall{
+     margin: 0 5px;
+     line-height: 60px;
+     font-size: 12px;
+      display: inline;
+   }
    color: #aaa;
   }
 }

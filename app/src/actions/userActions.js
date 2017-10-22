@@ -18,6 +18,8 @@ export const startLogOut = () => {
   }
 }
 
+// -------- REMOVE USER -----------------
+
 export const removeUser = () => ({ type: REMOVE_USER });
 
 export const startRemoveUser = () => {

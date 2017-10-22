@@ -10,20 +10,20 @@ import './styles/main.scss';
 
 import Routing from './routing/Routing';
 
-firebaseApp.auth().onAuthStateChanged(user => {
-  if(user){
-    console.log('user is signed in');
-  }else{
-    console.log('user has to sign in');
-  }
-})
+// firebaseApp.auth().onAuthStateChanged(user => {
+//   if(user){
+//     console.log('user is signed in');
+//   }else{
+//     console.log('user has to sign in');
+//   }
+// })
 
 const store = storeConfig();
 
-store.subscribe(()=>{
-  const state = store.getState();
-  console.log('state from index.js', state);
-})
+// store.subscribe(()=>{
+//   const state = store.getState();
+//   console.log('state from index.js', state);
+// })
 
 ReactDOM.render(
   <Provider store={store}>

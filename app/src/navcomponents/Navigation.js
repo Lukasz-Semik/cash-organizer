@@ -25,7 +25,7 @@ class Navigation extends Component{
       return(
         <header className="header">
           <nav className="header__navigation">
-            <h1 className="header__title">Organizer Szmalu</h1>
+            <h1 className="header__title">Hajs się zgadza!</h1>
             <Link className="button button--pull-right" to="/login">Zaloguj</Link>
             <Link className="button button--pull-right" to="/signup">Dołącz</Link>
           </nav>

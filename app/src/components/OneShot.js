@@ -11,7 +11,6 @@ const OneShot = (props) => {
   const deadlineClassModifier = done ? 'green' : when.deadlineClassModifier;
   const time = done ? 'Zapłacone' : when.time;
 
-
   return(
     <div className={`list-hiding-div ${props.classModifier}`}>
       <div className="list__item">

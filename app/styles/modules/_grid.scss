@@ -1,12 +1,17 @@
 .row{
-
   @include clearfix;
+  @include mediumWidthModif{
+    display: flex;
+    justify-content: center;
+  }
 }
 .col{
   float: left;
   box-sizing: border-box;
-
   &--6{
-    width: 33.33%;
+    width: 100%;
+    @include atSmall{
+      width: 33.33%;
+    }
   }
 }

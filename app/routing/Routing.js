@@ -15,6 +15,7 @@ import ShoppingListCreator from '../src/components/ShoppingListCreator';
 import ShoppingListEditor from '../src/components/ShoppingListEditor';
 import SpecificShoppingList from '../src/components/SpecificShoppingList';
 import RemoveUserPage from '../src/components/RemoveUserPage';
+import NotFound from '../src/components/NotFound';
 
 
 const Routing = () => (
@@ -34,6 +35,7 @@ const Routing = () => (
         <Route path='/shoppinglisteditor/:id' component={ShoppingListEditor} />
         <Route path='/specificshoppinglist/:id' component={SpecificShoppingList} />
         <Route path='/removeuser' component={RemoveUserPage} />
+        <Route component={NotFound} />
       </Switch>
     </div>
   </Router>

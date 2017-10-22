@@ -14,9 +14,11 @@ import ShoppingListsList from './components/ShoppingListsList';
 class App extends Component{
   constructor(props){
     super(props);
-
+    const width = document.getElementById('widthMeasurement') ? document.getElementById('widthMeasurement').clientWidth : 0;
+    const listIsVisible = width > 570;
     this.state = {
-      user: firebaseApp.auth().currentUser
+      user: firebaseApp.auth().currentUser,
+      listIsVisible
     }
   }
   componentDidMount(){
@@ -34,21 +36,21 @@ class App extends Component{
 
           <div className="col col--6">
             <div className="list">
-              <OneShotsList />
+              <OneShotsList listIsVisible={this.state.listIsVisible}/>
               <Link className="list__add-item" to="/oneshotcreator">+</Link>
             </div>
           </div>
 
           <div className="col col--6">
             <div className="list">
-              <StdExpList />
+              <StdExpList listIsVisible={this.state.listIsVisible}/>
               <Link className="list__add-item" to="/stdexpcreator">+</Link>
             </div>
           </div>
 
           <div className="col col--6">
             <div className="list">
-              <ShoppingListsList />
+              <ShoppingListsList listIsVisible={this.state.listIsVisible}/>
               <Link className="list__add-item" to="/shoppinglistcreator">+</Link>
             </div>
           </div>

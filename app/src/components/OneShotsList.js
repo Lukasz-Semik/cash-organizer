@@ -8,7 +8,7 @@ class OneShotsList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      listIsVisible: true
+      listIsVisible: this.props.listIsVisible
     }
     this.showHide = this.showHide.bind(this);
   }
@@ -35,6 +35,7 @@ class OneShotsList extends Component {
     }
   }
   render(){
+
     let showHideBtnModifier = '';
     if(!this.props.oneShots || (this.props.oneShots.length === 0)){
       showHideBtnModifier = 'list-btn-hidden';

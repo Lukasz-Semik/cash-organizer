@@ -7,7 +7,7 @@ class ShoppingListsList extends Component {
   constructor(props){
     super(props);
     this.state = {
-      listIsVisible: true
+      listIsVisible: this.props.listIsVisible
     }
     this.showHide = this.showHide.bind(this);
   }

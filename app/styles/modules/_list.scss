@@ -1,11 +1,17 @@
 .list{
   position: relative;
   background-color: white;
-  margin: 0 2%;
+  margin: 5px 2% 10px 2%;
+  @include atSmall{
+    margin: 0 2%;
+  }
   padding-bottom: 15px;
   @include box-shadow;
   &--sm{
-    width: 480px;
+    width: 95%;
+    @include mediumWidthModif{
+      width: 550px;
+    }
   }
   &--small-padding-bot{
     padding-bottom: 0;
@@ -14,8 +20,12 @@
     margin: 30px auto -15px auto;
   }
   &__title{
-    font-size: 20px;
-    padding: 15px 0;
+    font-size: 15px;
+    padding: 10px 0;
+    @include atSmall{
+      font-size: 20px;
+      padding: 15px 0;
+    }
     text-align: center;
     margin: 0;
   }
@@ -30,7 +40,10 @@
     position: absolute;
     top: -18px;
     left: 10px;
-    font-size: 12px;
+    font-size: 10px;
+    @include atSmall{
+      font-size: 12px;
+    }
     margin: 0;
     &--details{
       position: static;
@@ -42,8 +55,12 @@
     position: relative;
     &--title{
       font-size: 15px;
+      margin: 20px 0 5px 0;
+      @include atSmall{
+        font-size: 15px;
+        margin: 20px 0;
+      }
       text-align: center;
-      margin: 20px 0;
       transition: all 0.6s linear;
     }
     &--title-no-margins{
@@ -62,15 +79,19 @@
       padding: 0 10px;
       color: darkred;
       font-weight: 400;
+      font-size: 12px;
+      @include atSmall{
+        font-size: 20px;
+      }
     }
     &--descr-std-exp{
-      color: black;
+      color: #444;
     }
     &--cash{
       color: darkred;
     }
     &--black{
-      color: black;
+      color: #444;
     }
     &--grey{
       color: #aaa;
@@ -159,8 +180,14 @@
 .list-hiding-div{
   transition: all 0.6s ease-in-out;
   margin-bottom: 0;
+  transform: scale(1);
+  height: 90px;
+  @include atSmall{
+    height: 150px;
+  }
   &--is-hiding{
-    margin-bottom: -20%;
+    transform: scale(0);
+    height: 0;
     opacity: 0;
   }
 }

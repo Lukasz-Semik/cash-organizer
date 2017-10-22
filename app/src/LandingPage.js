@@ -10,7 +10,7 @@ class LandingPage extends Component{
         <h2 className="landing-title landing-title--red animation animation--3">Extra szybka</h2>
         <div className="landing-text">
           <h2 className="landing-title landing-title--orange landing-title--margin-modifier">
-            Organizer Szmalu
+            Hajs się zgadza!
           </h2>
           <p>Kontroluj i planuj swoje wydatki</p>
           <p>Nie zapomnij o rachunkach</p>

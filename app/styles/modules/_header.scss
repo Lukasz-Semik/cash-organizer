@@ -3,17 +3,25 @@
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
+  font-size: 8px;
+  @include atSmall{
+    font-size: 15px;
+  }
   @include box-shadow;
   &__navigation{
     @include clearfix;
-    height: 60px;
   }
 
   &__title{
     float: left;
     margin: 10px 0;
+    @include atSmall{
+      margin: 13px 0;
+    }
     padding: 0 10px;
+    color: #444;
   }
   &__username{
     color: darkred;
