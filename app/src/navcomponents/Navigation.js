@@ -12,14 +12,18 @@ class Navigation extends Component{
     //nav for logged in user.
     if(this.props.username !== 'not logged in'){
       return(
+        <div>
         <header className="header">
           <nav className="header__navigation">
             <h1 className="header__title">Cześć <span className="header__username"><em>{this.props.user.username}</em></span> </h1>
             <button className="button button--clear button--pull-right" onClick={()=>this.props.startLogOut()}>Wyloguj</button>
             <Link to="/removeuser" className="button button--clear button--pull-right button--remove-user">Usuń konto</Link>
-            <SummaryDisplay user={this.props.user} />
+              <SummaryDisplay user={this.props.user} />
           </nav>
+
         </header>
+
+        </div>
       );
     }else{ //nav for not logged in user
       return(

@@ -44,7 +44,7 @@ class ShoppingListEditor extends Component {
   render(){
     const { shoppingListMoney, deadline, shoppingListTitle } = this.props.shoppingList;
     const when = checkWhen(null, false, moment(deadline));
-    const time = this.state.done ? 'Zrobione' : when.time;
+    const time = this.state.done ? 'Zapłacone' : when.time;
     const deadlineClassModifier = this.state.done ? 'green' : when.deadlineClassModifier;
     const classDoneBtnModifier = this.state.done ? 'btn--green-const' : '';
     return(
@@ -72,12 +72,12 @@ class ShoppingListEditor extends Component {
               Usuń
             </button>
             <button onClick={this.changeStatus}
-              className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std`}>
-              {this.state.done ? 'Zapłacone' : 'Oznacz'}
+              className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std btn--small-scale-hover`}>
+              {this.state.done ? 'Zapłacone - zmień' : 'Niezapłacone - zmień'}
             </button>
           </div>
         </div>
-        <div className="wrapper-form wrapper-form--item-size wrapper-form--padd-bot-sm wrapper-form--move-up">
+        <div className="wrapper-form wrapper-form--padd-bot-sm wrapper-form--move-up">
           <div className="wrapper-helper">
             <ShoppingListForm done={this.state.done} duringEdition={true}
               shoppingList={this.props.shoppingList} addShoppingList={this.editShoppingList}/>

@@ -1,5 +1,6 @@
 import React from 'react';
 import numeral from 'numeral';
+import history from '../../routing/history';
 
 const SummaryDisplay = (props) => {
   const {
@@ -27,7 +28,7 @@ const SummaryDisplay = (props) => {
   }
   const total = oneShotsTotalMoney + stdExpensesTotalMoney + shoppingListTotalMoney;
   return(
-  <div className="summaryDisplay">
+  <div className={`summaryDisplay`}>
     <p><em>Wydatki: {numeral(total).format('0,0.00')} <span className="unit">pln</span></em></p>
     <p><em>Jednorazowe: {numeral(oneShotsTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>
     <p><em>Stałe: {numeral(stdExpensesTotalMoney).format('0,0.00')} <span className="unit">pln</span></em></p>

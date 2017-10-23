@@ -55,18 +55,18 @@ class StdExpForm extends Component{
         <h4 className="form__title">{this.props.stdExp ? 'Edytuj' : 'Stwórz'} Wydatek Stały</h4>
         <form onSubmit={this.handleOnSubmit} className="form">
           <div className="wrapper-helper">
-            <input type="text" name="stdExpTitle" value={this.state.stdExpTitle} className="form__input form__input--item-size"
+            <input type="text" name="stdExpTitle" value={this.state.stdExpTitle} className="form__input"
               onChange={this.onChangeTitle} placeholder="Tytul"/>
             <span className="form-msg form-msg--hints">{this.props.stdExp ? 'Tytul' : ''}</span>
           </div>
           <div className="wrapper-helper">
-            <input type="text" name="stdExpMoney" value={this.state.stdExpMoney} className="form__input form__input--item-size"
+            <input type="text" name="stdExpMoney" value={this.state.stdExpMoney} className="form__input"
               onChange={this.onChangeMoney} placeholder="Koszt"/>
             <span className="form-msg form-msg--hints">{this.props.stdExp ? 'Koszt' : ''}</span>
           </div>
           <div className="wrapper-helper">
             <input type="number" name="term" placeholder="Ostatni dzień płatności"
-              className="form__input form__input--item-size"
+              className="form__input"
               onChange={this.onChangeTerm} value={this.state.term}/>
             <span className="form-msg form-msg--hints">{this.props.stdExp ? 'Ostatni Dzień' : ''}</span>
           </div>

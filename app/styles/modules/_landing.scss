@@ -116,11 +116,11 @@
 .landing-text{
   color: #aaa;
   font-size: 12px;
+  text-align: center;
   @include atSmall{
     font-size: 20px;
   }
   font-weight: 900;
-  text-align: center;
   animation: landing-text-animation 12s linear;
 }
 @keyframes landing-text-animation {
@@ -143,6 +143,8 @@
   opacity: 0;
   position: absolute;
   top: 70%;
+  width: 100%;
+  text-align: center;
   @include atSmall{
     top: 100%;
   }

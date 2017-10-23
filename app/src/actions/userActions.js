@@ -14,7 +14,7 @@ export const startLogOut = () => {
       dispatch(logOut());
       history.push('/');
     })
-    .catch(error=>console.log(error));
+    // .catch(error=>console.log(error));
   }
 }
 

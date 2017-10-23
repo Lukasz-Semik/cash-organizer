@@ -1,34 +1,22 @@
 .wrapper-form{
   background-color: white;
   width: 95%;
-  margin-top: 30px;
+  margin: 30px auto 0 auto;
   @include atSmall{
-    width: 700px;
-    margin-top: 60px;
+    width: 550px;
+    margin-top: 30px;
   }
-  &--item-size{
-    width: 100%;
-    @include mediumWidthModif{
-      width: 600px;
-    }
+  @include mediumWidthModif{
+    width: 550px;
   }
-  margin: 0 auto;
   @include box-shadow;
   padding: 30px 0 50px 0;
-  &--item-size{
-    transform: scale(0.9);
-    margin-top: 20px;
-    @include atSmall{
-      margin: 0 auto;
-      transform: scale(0.8);
-    }
-  }
-  &--move-up{
-    margin-top: -30px;
-  }
 }
 .wrapper{
-  margin-top: 30px;
+  margin-top: 0;
+  @include atSmall{
+    margin-top: 30px;
+  }
   padding: 0 3%;
 }
 .wrapper-helper{

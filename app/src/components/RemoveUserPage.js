@@ -36,7 +36,7 @@ class RemoveUserPage extends Component {
   }
   render(){
     return(
-      <div className="wrapper-form wrapper-form--item-size wrapper-helper">
+      <div className="wrapper-form wrapper-helper">
         <h4 className="list__title">Usuwanie Konta</h4>
         <p className="removal-text"><i>Szkoda, że się żegnamy :(</i></p>
         <p className="removal-text"><i>Po usunięciu konta, nie będzie możliwości odzyskania danych.</i></p>

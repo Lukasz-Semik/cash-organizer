@@ -21,6 +21,7 @@ export const checkWhen = (term, isStdExp, deadline) => {
       currentMonthDeadline = `${nextYear}-${nextMonth}-${term}`;
       when = moment(currentMonthDeadline).locale('pl').fromNow();
     }
+    when = 'Kolejny ' + when;
     const deadlineClassModifier = setClassModifier(moment(currentMonthDeadline));
     return {
       time: when,
@@ -28,7 +29,6 @@ export const checkWhen = (term, isStdExp, deadline) => {
     };
   }else{// --- version for non standard expenses
     //check if user missed deadline.
-    const when = moment(deadline).locale('pl').fromNow();
     const isAfter = moment().isAfter(moment(deadline));
     //if yes, always red.
     let deadlineClassModifier
@@ -37,6 +37,10 @@ export const checkWhen = (term, isStdExp, deadline) => {
     }else{
       deadlineClassModifier = setClassModifier(moment(deadline));
     }
+    //--- check if is today and if yes, modify when
+    const today = moment().format('D');
+    const day = moment(deadline).format('D');
+    const when = today === day ? 'Dzisiaj' : moment(deadline).add(1,'days').locale('pl').fromNow();
     return{
       time: when,
       deadlineClassModifier

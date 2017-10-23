@@ -1,30 +1,26 @@
 .summaryDisplay{
-  position: absolute;
-  top: 50px;
-  width: 100%;
-  background-color: white;
-  @include atSmall{
-    position: static;
-    width: 60%;
+  display: none;
+  @include mediumWidthModif{
+    display: block;
   }
-  @include box-shadow;
-  @include atSmall{
-    box-shadow: none;
-  }
+  position: static;
+  width: 60%;
+  box-shadow: none;
   margin: 0 auto;
   text-align: center;
   p{
-   display: inline-block;
-   margin: 0;
-   width: 50%;
-   line-height: 15px;
+   display: inline;
+   line-height: 35px;
    font-size: 10px;
+   margin: 0 5px;
    @include atSmall{
-     margin: 0 5px;
      line-height: 60px;
      font-size: 12px;
       display: inline;
    }
    color: #aaa;
+  }
+  &--hidden{
+    display: none;
   }
 }

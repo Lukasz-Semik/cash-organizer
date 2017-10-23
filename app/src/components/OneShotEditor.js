@@ -45,7 +45,7 @@ class OneShotEditor extends Component {
     const { oneShotMoney, deadline } = this.props.oneShot;
     const when = checkWhen(null, false, deadline);
     const deadlineClassModifier = this.state.done ? 'green' : when.deadlineClassModifier;
-    const time = this.state.done ? 'Zrobione' : when.time;
+    const time = this.state.done ? 'Zapłacone' : when.time;
     const classDoneBtnModifier = this.state.done ? 'btn--green-const' : '';
     return(
       <div>
@@ -70,12 +70,12 @@ class OneShotEditor extends Component {
               Usuń
             </button>
             <button onClick={this.changeStatus}
-              className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std`}>
-              {this.state.done ? 'Zapłacone' : 'Oznacz'}
+              className={`btn ${classDoneBtnModifier} btn--top-left-detail-v smooth-transition-std btn--small-scale-hover` }>
+              {this.state.done ? 'Zapłacone - zmień' : 'Niezapłacone - zmień'}
             </button>
           </div>
         </div>
-        <div className="wrapper-form wrapper-form--item-size">
+        <div className="wrapper-form">
           <div className="wrapper-helper">
             <OneShotForm oneShot={this.props.oneShot} done={this.state.done} duringEdition={true}
               addOneShot={this.editOneShot}/>

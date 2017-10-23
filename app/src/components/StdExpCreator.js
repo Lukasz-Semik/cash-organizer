@@ -22,7 +22,7 @@ class StdExpCreator extends Component {
   render(){
     return(
       <div>
-        <div className="wrapper-form wrapper-form--item-size">
+        <div className="wrapper-form">
           <StdExpForm addOneStdExpense={this.addOneStdExp}/>
         </div>
       </div>

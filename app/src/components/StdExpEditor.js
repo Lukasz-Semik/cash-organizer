@@ -68,8 +68,8 @@ class StdExpEditor extends Component {
             </div>
             <button onClick={this.handleRemoving} className="btn btn--red-const btn--top-right-detail-v">Usuń</button>
               <button onClick={this.changeStatus}
-                className={`btn btn--top-left-detail-v smooth-transition-std btn--small-size btn--green`}>
-                Oznacz
+                className={`btn btn--top-left-detail-v smooth-transition-std btn--small-size btn--green btn--small-scale-hover`}>
+                Zaznacz wpłatę
               </button>
               <button onClick={this.resetStatus}
                 className={`btn btn--top-left-detail-v2 smooth-transition-std btn--small-size btn--red`}>
@@ -77,7 +77,7 @@ class StdExpEditor extends Component {
               </button>
           </div>
         </div>
-        <div className="wrapper-form wrapper-form--item-size">
+        <div className="wrapper-form">
           <div className="wrapper-helper">
             <StdExpForm lastPayment={this.state.lastPayment} duringEdition={true}
               stdExp={this.props.stdExp} addOneStdExpense={this.editStdExp}/>
@@ -89,7 +89,7 @@ class StdExpEditor extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const stdExp = state.usersData.stdExpenses.find(stdExp => stdExp.stdExpId === props.match.params.id);
+  const stdExp = !!state.usersData.stdExpenses ? state.usersData.stdExpenses.find(stdExp => stdExp.stdExpId === props.match.params.id) : '';
   return {
     stdExp
   }

@@ -21,7 +21,7 @@ class ShoppingListCreator extends Component {
   }
   render(){
     return(
-      <div className="wrapper-form wrapper-form--item-size">
+      <div className="wrapper-form">
         <ShoppingListForm addShoppingList={this.addShoppingList}/>
       </div>
     );

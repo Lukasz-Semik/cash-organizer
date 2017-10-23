@@ -17,7 +17,10 @@
     padding-bottom: 0;
   }
   &--center{
-    margin: 30px auto -15px auto;
+    margin: 0px auto 0 auto;
+    @include atSmall{
+      margin-top: 30px;
+    }
   }
   &__title{
     font-size: 15px;
@@ -50,14 +53,13 @@
     }
   }
   &__item{
-    margin-bottom: 10px;
     padding-bottom: 5px;
     position: relative;
     &--title{
       font-size: 15px;
       margin: 20px 0 5px 0;
       @include atSmall{
-        font-size: 15px;
+        font-size: 20px;
         margin: 20px 0;
       }
       text-align: center;
@@ -73,6 +75,7 @@
       font-size: 20px;
     }
     &--descr{
+      margin-top: -15px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -125,7 +128,10 @@
     transition: all 0.2s ease-in-out;
     &:hover{
       background-color: $btn-green;
-      transform: scale(1.2);
+      transform: scale(0.9);
+      @include atSmall{
+        transform: scale(1.2);
+      }
       cursor: pointer;
     }
     &--red{
@@ -171,7 +177,7 @@
 }
 .list-items-hidden{
   transform: rotateZ(180deg);
-  background-color: red;
+  background-color: $btn-green;
   &:hover{
     transform: rotateZ(180deg) scale(1.2);
     background-color: darkorange;
@@ -181,7 +187,7 @@
   transition: all 0.6s ease-in-out;
   margin-bottom: 0;
   transform: scale(1);
-  height: 90px;
+  height: 80px;
   @include atSmall{
     height: 150px;
   }

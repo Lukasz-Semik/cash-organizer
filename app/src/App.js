@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { firebaseApp } from '../firebase';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import history from '../routing/history';
 
 import { startTakeDbData } from './actions/dataActions';
 
@@ -66,6 +67,5 @@ const mapDispatchToProps = (dispatch) => {
     startTakeDbData: () => dispatch(startTakeDbData())
   }
 }
-
 
 export default connect(null, mapDispatchToProps)(App);

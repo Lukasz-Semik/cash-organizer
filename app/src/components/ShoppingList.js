@@ -32,6 +32,8 @@ const ShoppingList = (props) => {
           </p>
 
           <p className="list__item--black">
+            Termin:
+            <br/>
             {moment(deadline).locale('pl').format('LL')}
             <br/>
             <span className={`list__item--${deadlineClassModifier}`}>{time}</span>
