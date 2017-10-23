@@ -1,4 +1,4 @@
-#Cash organizer (PL - Hajs sie zgadza!)
+# Cash organizer (PL - Hajs sie zgadza!)
 Application to help organize expenses, bills and shopping.
-##Online version:
+## Online version:
 http://cash-organizer.herokuapp.com/
