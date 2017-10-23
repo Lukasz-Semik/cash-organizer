@@ -89,7 +89,8 @@ class StdExpEditor extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const stdExp = !!state.usersData.stdExpenses ? state.usersData.stdExpenses.find(stdExp => stdExp.stdExpId === props.match.params.id) : '';
+  const stdExp = !!state.usersData.stdExpenses ?
+        state.usersData.stdExpenses.find(stdExp => stdExp.stdExpId === props.match.params.id) : '';
   return {
     stdExp
   }

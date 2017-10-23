@@ -87,7 +87,8 @@ class OneShotEditor extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const oneShot = state.usersData.oneShots.find(oneShot => oneShot.oneShotId === props.match.params.id);
+  const oneShot = state.usersData.oneShots ?
+        state.usersData.oneShots.find(oneShot => oneShot.oneShotId === props.match.params.id) : '';
   return {
     oneShot
   }

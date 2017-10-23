@@ -89,7 +89,8 @@ class ShoppingListEditor extends Component {
 }
 
 const mapStateToProps = (state, props) => {
-  const shoppingList = state.usersData.shoppingLists.find(shoppingList => shoppingList.shoppingListId === props.match.params.id);
+  const shoppingList = state.usersData.shoppingLists ?
+        state.usersData.shoppingLists.find(shoppingList => shoppingList.shoppingListId === props.match.params.id) : '';
   return {
     shoppingList
   }
