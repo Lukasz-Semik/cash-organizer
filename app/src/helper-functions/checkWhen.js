@@ -40,7 +40,7 @@ export const checkWhen = (term, isStdExp, deadline) => {
     //--- check if is today and if yes, modify when
     const today = moment().format('D');
     const day = moment(deadline).format('D');
-    const when = today === day ? 'Dzisiaj' : moment(deadline).add(1,'days').locale('pl').fromNow();
+    const when = today === day ? 'Dzisiaj' : moment(deadline).locale('pl').fromNow();
     return{
       time: when,
       deadlineClassModifier

@@ -30,8 +30,12 @@
       border: 2px solid black;
     }
     &--shopping-list-size{
-      font-size: 20px;
-      padding: 15px;
+      font-size: 15px;
+      padding: 10px;
+      @include atSmall{
+        font-size: 20px;
+        padding: 15px;
+      }
     }
   }
   &__title{
