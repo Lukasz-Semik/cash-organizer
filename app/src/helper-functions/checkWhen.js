@@ -28,7 +28,7 @@ export const checkWhen = (term, isStdExp, deadline) => {
       deadlineClassModifier
     };
   }else{// --- version for non standard expenses
-    //check if user missed deadline.
+    // //check if user missed deadline.
     const isAfter = moment().isAfter(moment(deadline));
     //if yes, always red.
     let deadlineClassModifier
@@ -37,10 +37,34 @@ export const checkWhen = (term, isStdExp, deadline) => {
     }else{
       deadlineClassModifier = setClassModifier(moment(deadline));
     }
-    //--- check if is today and if yes, modify when
-    const today = moment().format('D');
-    const day = moment(deadline).format('D');
-    const when = today === day ? 'Dzisiaj' : moment(deadline).locale('pl').fromNow();
+    // //--- check if is today and if yes, modify when
+    // const today = moment().format('D');
+    // const day = moment(deadline).format('D');
+    // const when = today === day ? 'Dzisiaj' : moment(deadline).locale('pl').fromNow();
+
+    const today = parseInt(moment().format('D'));
+    const deadlineDay = parseInt(moment(deadline).format('D'));
+    //console.log(today-deadlineDay);
+    //const r = parseInt(today) - parseInt(deadlineDay);
+    let when;
+
+    if(moment().isSame(deadline, 'day')){
+      when = 'Dzisiaj';
+    }if(moment().isBefore(deadline, 'day')){
+      //console.log('today > deadline', r)
+      const result = Math.abs(today - deadlineDay);
+      when = `za ${result} ${result===1 ? 'dzień' : 'dni' }`;
+      if(moment().isBefore(deadline, 'month')){
+        when = moment(deadline).locale('pl').fromNow();
+      }
+    }if(moment().isAfter(moment(deadline), 'day')){
+      //console.log('today > deadline', r)
+      const result = today-deadlineDay;
+      when = `${result} ${result===1 ? 'dzień' : 'dni'} temu`;
+      if(moment().isAfter(moment(deadline), 'month')){
+        when = moment(deadline).locale('pl').fromNow();
+      }
+    }
     return{
       time: when,
       deadlineClassModifier
