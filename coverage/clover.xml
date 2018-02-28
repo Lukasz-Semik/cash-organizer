@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1519849913488" clover="3.2.0">
+  <project timestamp="1519849913488" name="All files">
+    <metrics statements="44" coveredstatements="34" conditionals="30" coveredconditionals="23" methods="3" coveredmethods="3" elements="77" coveredelements="60" complexity="0" loc="44" ncloc="44" packages="2" files="2" classes="2">
+      <package name="helper-functions">
+        <metrics statements="43" coveredstatements="33" conditionals="30" coveredconditionals="23" methods="2" coveredmethods="2"/>
+        <file name="checkWhen.js" path="/Users/lukaszsemik/Desktop/cash-organizer/app/src/helper-functions/checkWhen.js">
+          <metrics statements="43" coveredstatements="33" conditionals="30" coveredconditionals="23" methods="2" coveredmethods="2"/>
+          <line num="4" count="1" type="stmt"/>
+          <line num="6" count="7" type="stmt"/>
+          <line num="7" count="7" type="stmt"/>
+          <line num="8" count="7" type="stmt"/>
+          <line num="10" count="7" type="cond" truecount="1" falsecount="1"/>
+          <line num="11" count="0" type="stmt"/>
+          <line num="14" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="16" count="0" type="stmt"/>
+          <line num="19" count="0" type="stmt"/>
+          <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+          <line num="21" count="0" type="stmt"/>
+          <line num="22" count="0" type="stmt"/>
+          <line num="24" count="0" type="stmt"/>
+          <line num="25" count="0" type="stmt"/>
+          <line num="26" count="0" type="stmt"/>
+          <line num="32" count="7" type="stmt"/>
+          <line num="35" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="36" count="2" type="stmt"/>
+          <line num="38" count="5" type="stmt"/>
+          <line num="45" count="7" type="stmt"/>
+          <line num="46" count="7" type="stmt"/>
+          <line num="51" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="52" count="1" type="stmt"/>
+          <line num="53" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="55" count="4" type="stmt"/>
+          <line num="56" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="57" count="4" type="cond" truecount="2" falsecount="0"/>
+          <line num="58" count="2" type="stmt"/>
+          <line num="60" count="7" type="cond" truecount="2" falsecount="0"/>
+          <line num="62" count="1" type="stmt"/>
+          <line num="63" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="64" count="1" type="cond" truecount="1" falsecount="1"/>
+          <line num="65" count="1" type="stmt"/>
+          <line num="68" count="7" type="stmt"/>
+          <line num="76" count="5" type="stmt"/>
+          <line num="77" count="5" type="stmt"/>
+          <line num="78" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="79" count="1" type="stmt"/>
+          <line num="81" count="5" type="cond" truecount="4" falsecount="0"/>
+          <line num="82" count="1" type="stmt"/>
+          <line num="84" count="5" type="cond" truecount="2" falsecount="0"/>
+          <line num="85" count="2" type="stmt"/>
+          <line num="87" count="5" type="stmt"/>
+        </file>
+      </package>
+      <package name="tests.helper-functions">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <file name="tester.js" path="/Users/lukaszsemik/Desktop/cash-organizer/app/src/tests/helper-functions/tester.js">
+          <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+          <line num="1" count="1" type="stmt"/>
+        </file>
+      </package>
+    </metrics>
+  </project>
+</coverage>
