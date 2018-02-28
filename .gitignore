@@ -1,4 +1,5 @@
 /node_modules/
+coverage
 *.txt
 public/assets/bundle.js
 public/assets/bundle.js.map
